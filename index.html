@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>میٹر ریڈنگ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f5f2ee; --card:#ffffff; --ink:#1d1a18; --mute:#6c655f; --line:#e2dcd5;
+  --red:#a51d1d; --red-ink:#ffffff;
+  --blue:#dce7f8; --blue-i:#1f4e9a;
+  --pink:#fbe0e4; --pink-i:#9a2340;
+  --orange:#f9dfc8; --orange-i:#9c4a0b;
+  --green:#d5ecd9; --green-i:#1c6a33;
+  --warn:#b45309; --field:#faf8f5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161413; --card:#211e1c; --ink:#f1ece7; --mute:#a59d95; --line:#38332f;
+    --red:#c93a3a; --red-ink:#ffffff;
+    --blue:#1e2c46; --blue-i:#8db2f0;
+    --pink:#4a212b; --pink-i:#f2a3b3;
+    --orange:#4a2f18; --orange-i:#f2b581;
+    --green:#1c3a26; --green-i:#8fd6a3;
+    --warn:#f0a94a; --field:#191715;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161413; --card:#211e1c; --ink:#f1ece7; --mute:#a59d95; --line:#38332f;
+  --red:#c93a3a; --red-ink:#ffffff;
+  --blue:#1e2c46; --blue-i:#8db2f0;
+  --pink:#4a212b; --pink-i:#f2a3b3;
+  --orange:#4a2f18; --orange-i:#f2b581;
+  --green:#1c3a26; --green-i:#8fd6a3;
+  --warn:#f0a94a; --field:#191715;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq','Noto Naskh Arabic',serif;
+  line-height:2; font-size:16px;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px 60px}
+header{background:var(--red);color:var(--red-ink);padding:14px 14px 0;margin:0 -14px}
+header h1{margin:0;font-size:22px;font-weight:700;line-height:2.1;text-align:center}
+.tabs{display:flex;gap:6px;margin-top:6px}
+.tab{
+  flex:1;border:0;background:rgba(255,255,255,.16);color:var(--red-ink);
+  font:inherit;font-size:17px;padding:4px 8px 0;min-height:48px;
+  border-radius:12px 12px 0 0;cursor:pointer;
+}
+.tab[aria-selected="true"]{background:var(--bg);color:var(--ink);font-weight:700}
+.tab:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--blue-i);outline-offset:2px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:14px}
+.card h2{margin:0 0 4px;font-size:17px;line-height:2.1}
+.fielddate{display:block;margin-bottom:10px}
+label.lbl{display:block;font-size:14px;color:var(--mute);line-height:1.9}
+input[type=date],input[type=number],input[type=text],textarea{
+  width:100%;min-height:50px;border:1.5px solid var(--line);background:var(--field);color:var(--ink);
+  border-radius:10px;padding:8px 12px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:19px;
+}
+input[type=number]{direction:ltr;text-align:center;letter-spacing:.5px}
+input[type=date]{direction:ltr;text-align:center}
+input[type=text]{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;font-size:17px;line-height:2}
+
+.row{border-radius:12px;padding:10px 12px;margin-top:10px}
+.row.a{background:var(--blue)} .row.b{background:var(--pink)} .row.x{background:var(--orange)}
+.row .name{font-family:system-ui,sans-serif;font-weight:700;font-size:15px;margin-bottom:2px}
+.row.a .name{color:var(--blue-i)} .row.b .name{color:var(--pink-i)} .row.x .name{color:var(--orange-i)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px;font-size:14px;line-height:1.8;color:var(--mute)}
+.meta b{font-family:system-ui,sans-serif;font-size:16px;color:var(--ink);direction:ltr;unicode-bidi:isolate}
+.meta .u{font-family:system-ui,sans-serif;font-weight:700;font-size:17px;direction:ltr;unicode-bidi:isolate}
+.warn{color:var(--warn)!important}
+
+.net{background:var(--green);color:var(--green-i);border-radius:12px;padding:10px 14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center}
+.net span:last-child{font-family:system-ui,sans-serif;font-weight:700;font-size:26px;direction:ltr;unicode-bidi:isolate}
+.net small{font-size:14px}
+
+.btns{display:flex;gap:8px;margin-top:14px}
+button{font:inherit;cursor:pointer}
+.primary{flex:1;min-height:52px;border:0;border-radius:12px;background:var(--red);color:var(--red-ink);font-size:18px;font-weight:700}
+.ghost{min-height:52px;padding:0 16px;border:1.5px solid var(--line);border-radius:12px;background:transparent;color:var(--ink);font-size:16px}
+.small{min-height:40px;padding:0 12px;border:1.5px solid var(--line);border-radius:10px;background:transparent;color:var(--ink);font-size:14px}
+.small.danger{color:var(--warn);border-color:var(--warn)}
+.small.solid{background:var(--red);color:var(--red-ink);border-color:var(--red);font-weight:700}
+
+.mizan{background:var(--green);color:var(--green-i);border-radius:14px;padding:12px 16px;margin-top:14px;display:flex;justify-content:space-between;align-items:center}
+.mizan .big{font-family:system-ui,sans-serif;font-size:30px;font-weight:700;direction:ltr;unicode-bidi:isolate}
+.mizan small{display:block;font-size:13px;line-height:1.7;opacity:.85}
+
+.tablewrap{overflow-x:auto;margin-top:10px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:700px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;direction:rtl}
+th,td{padding:8px 8px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;direction:ltr}
+th{font-size:12px;font-weight:700;line-height:1.3;padding:8px 6px}
+th.h-d,td.h-d{position:sticky;right:0;background:var(--card);border-left:1px solid var(--line)}
+th.c-a,td.c-a{background:var(--blue)} th.c-a{color:var(--blue-i)}
+th.c-b,td.c-b{background:var(--pink)} th.c-b{color:var(--pink-i)}
+th.c-x,td.c-x{background:var(--orange)} th.c-x{color:var(--orange-i)}
+th.c-n,td.c-n{background:var(--green);font-weight:700} th.c-n{color:var(--green-i)}
+td.act{display:flex;gap:6px;justify-content:center;direction:rtl}
+.empty{padding:18px 10px;text-align:center;color:var(--mute);font-size:15px}
+.note{margin:8px 2px 0;font-size:13.5px;color:var(--mute);line-height:2}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:20px}
+.sectionhead h2{margin:0;font-size:17px}
+.sectionhead .grp{display:flex;gap:6px}
+.sectionhead.arch{margin-top:26px}
+
+.chip{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;min-height:54px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:4px 14px;margin-top:8px;font:inherit;font-size:16px;text-align:right}
+.chip small{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;color:var(--mute);white-space:nowrap}
+.chip.on{border-color:var(--red);border-width:2px}
+
+details{margin-top:18px}
+summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--mute)}
+textarea{min-height:90px;font-size:13px;direction:ltr;text-align:left}
+.toast{
+  position:fixed;left:50%;transform:translateX(-50%);
+  bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  background:var(--ink);color:var(--bg);padding:4px 18px;border-radius:12px;font-size:15px;
+  opacity:0;pointer-events:none;transition:opacity .2s;max-width:90%;text-align:center;z-index:9
+}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>میٹر ریڈنگ</h1>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-wazir" aria-selected="true">وزیر باغ</button>
+      <button class="tab" role="tab" id="tab-kohat" aria-selected="false">کوہاٹ روڈ</button>
+    </div>
+  </header>
+
+  <section class="card" aria-labelledby="formtitle">
+    <h2 id="formtitle">نئی انٹری</h2>
+
+    <label class="fielddate"><span class="lbl">تاریخ</span>
+      <input type="date" id="fd"></label>
+
+    <div class="row a">
+      <div class="name">Imp 06</div>
+      <input type="number" id="fa" inputmode="decimal" step="any" placeholder="موجودہ ریڈنگ" aria-label="Imp 06 موجودہ ریڈنگ">
+      <div class="meta"><span>پچھلی: <b id="pa">—</b></span><span>یونٹ: <span class="u" id="ua">—</span></span></div>
+    </div>
+
+    <div class="row b">
+      <div class="name">Imp 08</div>
+      <input type="number" id="fb" inputmode="decimal" step="any" placeholder="موجودہ ریڈنگ" aria-label="Imp 08 موجودہ ریڈنگ">
+      <div class="meta"><span>پچھلی: <b id="pb">—</b></span><span>یونٹ: <span class="u" id="ub">—</span></span></div>
+    </div>
+
+    <div class="row x">
+      <div class="name">Exp 09</div>
+      <input type="number" id="fx" inputmode="decimal" step="any" placeholder="موجودہ ریڈنگ" aria-label="Exp 09 موجودہ ریڈنگ">
+      <div class="meta"><span>پچھلی: <b id="px">—</b></span><span>یونٹ: <span class="u" id="ux">—</span></span></div>
+    </div>
+
+    <div class="net">
+      <span><small>Total Imp U</small> <b id="ti" style="font-family:system-ui;direction:ltr;unicode-bidi:isolate">—</b><br><small>Net U</small></span>
+      <span id="nu">—</span>
+    </div>
+
+    <div class="btns">
+      <button class="primary" id="save">محفوظ کریں</button>
+      <button class="ghost" id="cancel" hidden>منسوخ</button>
+    </div>
+  </section>
+
+  <div class="mizan">
+    <div>موجودہ مہینے کا میزان<small id="mcount"></small></div>
+    <div class="big" id="mtot">0</div>
+  </div>
+
+  <div class="sectionhead">
+    <h2>موجودہ مہینے کا ریکارڈ</h2>
+    <div class="grp">
+      <button class="small solid" id="close">مہینہ بند کریں</button>
+      <button class="small" id="copy">Excel کاپی</button>
+    </div>
+  </div>
+
+  <section class="card" id="closepanel" hidden aria-labelledby="closetitle">
+    <h2 id="closetitle">مہینہ بند کر کے محفوظ کریں</h2>
+    <p class="note" id="closeinfo" style="margin-top:0"></p>
+    <label class="lbl" for="closelabel">اس مہینے کا نام</label>
+    <input type="text" id="closelabel">
+    <div class="btns">
+      <button class="primary" id="closeok">بند کریں اور نیا مہینہ شروع کریں</button>
+      <button class="ghost" id="closeno">منسوخ</button>
+    </div>
+  </section>
+
+  <div class="tablewrap" id="tablewrap"></div>
+  <p class="note" id="carrynote" hidden>پہلی انٹری پچھلے مہینے کی آخری ریڈنگ ہے۔ اگلی ریڈنگ کے یونٹ اسی سے نکلیں گے۔</p>
+
+  <div class="sectionhead arch">
+    <h2>پچھلے مہینے</h2>
+  </div>
+  <div id="archlist"></div>
+  <div id="archview"></div>
+
+  <details>
+    <summary>بیک اپ اور بحالی</summary>
+    <div class="card" style="margin-top:6px">
+      <p style="margin:0 0 8px;font-size:14px;color:var(--mute);line-height:2">ڈیٹا اسی فون کے براؤزر میں محفوظ ہے (پچھلے مہینوں سمیت)۔ فون بدلنے یا براؤزر صاف کرنے سے پہلے بیک اپ کاپی کر کے کہیں (WhatsApp / Notes) رکھ لیں۔</p>
+      <div class="btns" style="margin-top:0">
+        <button class="ghost" id="bk" style="flex:1">بیک اپ کاپی کریں</button>
+      </div>
+      <label class="lbl" style="margin-top:12px">بیک اپ یہاں پیسٹ کریں</label>
+      <textarea id="rs" placeholder="{...}"></textarea>
+      <div class="btns"><button class="ghost" id="rsbtn" style="flex:1">بحال کریں</button></div>
+    </div>
+  </details>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var KEY = 'meter-reading-v1';
+  var MONTHS = ['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'];
+  var db = { wazir: { rows: [], archive: [] }, kohat: { rows: [], archive: [] } };
+  var cur = 'wazir', editing = null, pendingDel = null, viewing = null, pendingArchDel = false;
+  var $ = function(id){ return document.getElementById(id); };
+  function M(){ return db[cur]; }
+
+  function seed(){
+    return [
+      { id: 1, d: '2026-08-01', a: 24252, b: 75686, x: 57542 },
+      { id: 2, d: '2026-08-15', a: 24910, b: 77423, x: 57953 },
+      { id: 3, d: '2026-08-22', a: 25234, b: 78382, x: 58114 },
+      { id: 4, d: '2026-09-02', a: 25813, b: 79873, x: 58336 }
+    ];
+  }
+  // accepts the old format (plain arrays) and the new one
+  function norm(o){
+    var out = {};
+    ['wazir', 'kohat'].forEach(function(k){
+      var v = o && o[k];
+      if (Array.isArray(v)) out[k] = { rows: v, archive: [] };
+      else if (v && Array.isArray(v.rows)) out[k] = { rows: v.rows, archive: Array.isArray(v.archive) ? v.archive : [] };
+      else throw new Error('bad');
+    });
+    return out;
+  }
+  function load(){
+    try {
+      var s = localStorage.getItem(KEY);
+      if (s) { db = norm(JSON.parse(s)); persist(); return; }
+    } catch(e) {}
+    db.wazir.rows = seed();
+    persist();
+  }
+  function persist(){
+    try { localStorage.setItem(KEY, JSON.stringify(db)); }
+    catch(e) { toast('ڈیٹا محفوظ نہیں ہو سکا'); }
+  }
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmt(n){
+    if (n === null || n === undefined || isNaN(n)) return '—';
+    return String(Math.round(n * 100) / 100);
+  }
+  function sgn(n){
+    if (n === null || n === undefined || isNaN(n)) return '—';
+    return (n > 0 ? '+' : '') + fmt(n);
+  }
+  function dmy(iso){
+    var p = iso.split('-');
+    return p[2] + '/' + p[1] + '/' + p[0];
+  }
+  function todayISO(){
+    var t = new Date();
+    return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+  }
+  function sorted(rows){
+    return rows.slice().sort(function(p, q){ return p.d < q.d ? -1 : (p.d > q.d ? 1 : 0); });
+  }
+
+  // Net U follows the sheet: Exp U minus Total Imp U
+  function calc(rows){
+    var tot = 0;
+    var out = rows.map(function(r, i){
+      var p = rows[i - 1];
+      var o = { id: r.id, d: r.d, a: r.a, b: r.b, x: r.x, pa: null, pb: null, px: null, carry: !!r.carry };
+      if (p) {
+        o.pa = p.a; o.pb = p.b; o.px = p.x;
+        o.u06 = r.a - p.a; o.u08 = r.b - p.b; o.ux = r.x - p.x;
+        o.ti = o.u06 + o.u08;
+        o.net = o.ux - o.ti;
+      } else {
+        o.u06 = null; o.u08 = null; o.ux = null; o.ti = 0; o.net = 0;
+      }
+      tot += o.net;
+      return o;
+    });
+    return { rows: out, tot: tot };
+  }
+
+  var toastTimer;
+  function toast(msg){
+    var t = $('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  }
+
+  // ---------- live preview in the form ----------
+  function previous(){
+    var d = $('fd').value;
+    var best = null;
+    M().rows.forEach(function(r){
+      if (r.id === editing) return;
+      if (d && r.d < d && (!best || r.d > best.d)) best = r;
+    });
+    return best;
+  }
+  function setUnit(id, val){
+    var el = $(id);
+    el.textContent = val === null ? '—' : sgn(val);
+    el.classList.toggle('warn', val !== null && val < 0);
+  }
+  function preview(){
+    var p = previous();
+    var a = parseFloat($('fa').value), b = parseFloat($('fb').value), x = parseFloat($('fx').value);
+    $('pa').textContent = p ? fmt(p.a) : '—';
+    $('pb').textContent = p ? fmt(p.b) : '—';
+    $('px').textContent = p ? fmt(p.x) : '—';
+    var u06 = (p && !isNaN(a)) ? a - p.a : null;
+    var u08 = (p && !isNaN(b)) ? b - p.b : null;
+    var ux  = (p && !isNaN(x)) ? x - p.x : null;
+    setUnit('ua', u06); setUnit('ub', u08); setUnit('ux', ux);
+    var ti = (u06 !== null && u08 !== null) ? u06 + u08 : null;
+    $('ti').textContent = ti === null ? '—' : fmt(ti);
+    var nu = (ti !== null && ux !== null) ? ux - ti : (p ? null : 0);
+    $('nu').textContent = nu === null ? '—' : fmt(nu);
+  }
+
+  // ---------- tables ----------
+  function tableHTML(c, actions){
+    var h = '<table><thead><tr>' +
+      '<th class="h-d">Date</th>' +
+      '<th class="c-a">Curr 06</th><th class="c-a">Imp 06 U</th>' +
+      '<th class="c-b">Curr 08</th><th class="c-b">Imp 08 U</th>' +
+      '<th class="c-n">Total Imp U</th>' +
+      '<th class="c-x">Curr Exp</th><th class="c-x">Exp U</th>' +
+      '<th class="c-n">Net U</th>' + (actions ? '<th></th>' : '') + '</tr></thead><tbody>';
+    c.rows.slice().reverse().forEach(function(r){
+      h += '<tr>' +
+        '<td class="h-d">' + dmy(r.d) + '</td>' +
+        '<td class="c-a">' + fmt(r.a) + '</td><td class="c-a">' + fmt(r.u06) + '</td>' +
+        '<td class="c-b">' + fmt(r.b) + '</td><td class="c-b">' + fmt(r.u08) + '</td>' +
+        '<td class="c-n">' + fmt(r.ti) + '</td>' +
+        '<td class="c-x">' + fmt(r.x) + '</td><td class="c-x">' + fmt(r.ux) + '</td>' +
+        '<td class="c-n">' + fmt(r.net) + '</td>';
+      if (actions) {
+        var del = pendingDel === r.id;
+        h += '<td class="act"><button class="small" data-edit="' + r.id + '">ایڈٹ</button>' +
+             '<button class="small danger" data-del="' + r.id + '">' + (del ? 'پکا حذف؟' : 'حذف') + '</button></td>';
+      }
+      h += '</tr>';
+    });
+    return h + '</tbody></table>';
+  }
+
+  function renderList(){
+    var c = calc(sorted(M().rows));
+    $('mtot').textContent = fmt(c.tot);
+    $('mcount').textContent = c.rows.length ? (c.rows.length + ' انٹریز') : '';
+    var w = $('tablewrap');
+    if (!c.rows.length) {
+      w.innerHTML = '<div class="empty">ابھی کوئی انٹری نہیں۔ اوپر پہلی ریڈنگ ڈالیں۔</div>';
+    } else {
+      w.innerHTML = tableHTML(c, true);
+    }
+    $('carrynote').hidden = !(c.rows.length && c.rows[0].carry);
+  }
+
+  // ---------- archive (previous months) ----------
+  function renderArchive(){
+    var arr = M().archive;
+    var box = $('archlist');
+    if (!arr.length) {
+      box.innerHTML = '<div class="empty">ابھی کوئی مہینہ محفوظ نہیں۔ "مہینہ بند کریں" دبانے پر مہینہ یہاں آ جائے گا۔</div>';
+      return;
+    }
+    box.innerHTML = arr.map(function(m){
+      var c = calc(sorted(m.rows));
+      return '<button class="chip' + (viewing === m.id ? ' on' : '') + '" data-arch="' + m.id + '">' +
+        '<span>' + esc(m.label) + '</span>' +
+        '<small>' + c.rows.length + ' entries, Mizan ' + fmt(c.tot) + '</small></button>';
+    }).join('');
+  }
+  function renderArchView(){
+    var box = $('archview');
+    var m = M().archive.filter(function(q){ return q.id === viewing; })[0];
+    if (!m) { viewing = null; box.innerHTML = ''; return; }
+    var c = calc(sorted(m.rows));
+    box.innerHTML =
+      '<div class="mizan"><div>' + esc(m.label) + '<small>' + c.rows.length + ' انٹریز</small></div>' +
+      '<div class="big">' + fmt(c.tot) + '</div></div>' +
+      '<div class="tablewrap">' + tableHTML(c, false) + '</div>' +
+      '<div class="btns">' +
+        '<button class="ghost" style="flex:1" data-a="copy">Excel کاپی</button>' +
+        '<button class="ghost" style="flex:1" data-a="reopen">دوبارہ کھولیں</button>' +
+      '</div>' +
+      '<div class="btns" style="margin-top:8px">' +
+        '<button class="ghost danger" style="flex:1;color:var(--warn);border-color:var(--warn)" data-a="del">' + (pendingArchDel ? 'پکا حذف کریں؟' : 'یہ مہینہ حذف کریں') + '</button>' +
+        '<button class="ghost" style="flex:1" data-a="hide">بند کریں</button>' +
+      '</div>';
+  }
+
+  function renderAll(){ renderList(); renderArchive(); renderArchView(); preview(); }
+
+  // ---------- form ----------
+  function resetForm(){
+    editing = null;
+    $('fd').value = todayISO();
+    $('fa').value = ''; $('fb').value = ''; $('fx').value = '';
+    $('save').textContent = 'محفوظ کریں';
+    $('formtitle').textContent = 'نئی انٹری';
+    $('cancel').hidden = true;
+    preview();
+  }
+
+  function onSave(){
+    var d = $('fd').value;
+    var a = parseFloat($('fa').value), b = parseFloat($('fb').value), x = parseFloat($('fx').value);
+    if (!d || isNaN(a) || isNaN(b) || isNaN(x)) { toast('تاریخ اور تینوں ریڈنگز بھریں'); return; }
+    var list = M().rows;
+    var dup = list.some(function(r){ return r.d === d && r.id !== editing; });
+    if (dup) { toast('اس تاریخ کی انٹری پہلے سے موجود ہے'); return; }
+    var wasEdit = !!editing;
+    if (editing) {
+      var r = list.filter(function(q){ return q.id === editing; })[0];
+      if (r) { r.d = d; r.a = a; r.b = b; r.x = x; }
+    } else {
+      list.push({ id: Date.now(), d: d, a: a, b: b, x: x });
+    }
+    persist();
+    pendingDel = null;
+    resetForm();
+    renderList();
+    toast(wasEdit ? 'انٹری اپڈیٹ ہو گئی' : 'انٹری محفوظ ہو گئی');
+  }
+
+  function startEdit(id){
+    var r = M().rows.filter(function(q){ return q.id === id; })[0];
+    if (!r) return;
+    editing = id; pendingDel = null;
+    $('fd').value = r.d; $('fa').value = r.a; $('fb').value = r.b; $('fx').value = r.x;
+    $('save').textContent = 'تبدیلی محفوظ کریں';
+    $('formtitle').textContent = 'انٹری ایڈٹ';
+    $('cancel').hidden = false;
+    preview(); renderList();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function doDelete(id){
+    if (pendingDel !== id) { pendingDel = id; renderList(); return; }
+    M().rows = M().rows.filter(function(q){ return q.id !== id; });
+    pendingDel = null;
+    if (editing === id) resetForm();
+    persist(); renderList(); preview();
+    toast('انٹری حذف ہو گئی');
+  }
+
+  // ---------- close month ----------
+  function defaultLabel(rows){
+    var f = rows[0].d.split('-');
+    return MONTHS[parseInt(f[1], 10) - 1] + ' ' + f[0];
+  }
+  function openClose(){
+    var rows = sorted(M().rows);
+    if (rows.length < 2) { toast('مہینہ بند کرنے کے لیے کم از کم دو انٹریز چاہئیں'); return; }
+    var last = rows[rows.length - 1];
+    $('closelabel').value = defaultLabel(rows);
+    $('closeinfo').textContent = 'اس مہینے کی ' + rows.length + ' انٹریز "پچھلے مہینے" میں الگ محفوظ ہو جائیں گی۔ نیا مہینہ آخری ریڈنگ (' + dmy(last.d) + ') سے شروع ہوگا تاکہ اگلے یونٹ اسی سے نکلیں۔';
+    $('closepanel').hidden = false;
+    $('closepanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function confirmClose(){
+    var rows = sorted(M().rows);
+    if (rows.length < 2) { $('closepanel').hidden = true; return; }
+    var label = $('closelabel').value.trim() || defaultLabel(rows);
+    var last = rows[rows.length - 1];
+    M().archive.unshift({
+      id: Date.now(), label: label, closedAt: todayISO(),
+      rows: rows.map(function(r){ return { id: r.id, d: r.d, a: r.a, b: r.b, x: r.x }; })
+    });
+    M().rows = [{ id: Date.now() + 1, d: last.d, a: last.a, b: last.b, x: last.x, carry: true }];
+    persist();
+    $('closepanel').hidden = true;
+    pendingDel = null; viewing = null;
+    resetForm(); renderAll();
+    toast('مہینہ محفوظ ہو گیا — نیا مہینہ شروع');
+  }
+
+  // ---------- archive actions ----------
+  function archCurrent(){
+    return M().archive.filter(function(q){ return q.id === viewing; })[0];
+  }
+  function onArchAction(a){
+    var m = archCurrent();
+    if (!m) return;
+    if (a === 'hide') { viewing = null; pendingArchDel = false; renderArchive(); renderArchView(); return; }
+    if (a === 'copy') { copyExcel(calc(sorted(m.rows))); return; }
+    if (a === 'del') {
+      if (!pendingArchDel) { pendingArchDel = true; renderArchView(); return; }
+      M().archive = M().archive.filter(function(q){ return q.id !== m.id; });
+      viewing = null; pendingArchDel = false;
+      persist(); renderArchive(); renderArchView();
+      toast('مہینہ حذف ہو گیا');
+      return;
+    }
+    if (a === 'reopen') {
+      if (M().archive[0].id !== m.id) { toast('صرف آخری محفوظ مہینہ دوبارہ کھولا جا سکتا ہے'); return; }
+      if (M().rows.length > 1) { toast('پہلے موجودہ مہینے کی نئی انٹریز ہٹائیں یا اسے بند کریں'); return; }
+      M().rows = m.rows.map(function(r){ return { id: r.id, d: r.d, a: r.a, b: r.b, x: r.x }; });
+      M().archive = M().archive.filter(function(q){ return q.id !== m.id; });
+      viewing = null; pendingArchDel = false;
+      persist(); resetForm(); renderAll();
+      toast('مہینہ دوبارہ کھل گیا');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // ---------- tabs ----------
+  function switchTo(m){
+    cur = m; pendingDel = null; viewing = null; pendingArchDel = false;
+    $('closepanel').hidden = true;
+    $('tab-wazir').setAttribute('aria-selected', m === 'wazir');
+    $('tab-kohat').setAttribute('aria-selected', m === 'kohat');
+    resetForm(); renderAll();
+  }
+
+  // ---------- copy / backup ----------
+  function fallbackCopy(t){
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch(e) { return false; }
+  }
+  function copyText(t){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(t).then(function(){ return true; }, function(){ return fallbackCopy(t); });
+    }
+    return Promise.resolve(fallbackCopy(t));
+  }
+  function copyExcel(c){
+    if (!c.rows.length) { toast('کاپی کے لیے کوئی ریکارڈ نہیں'); return; }
+    var lines = [['Date','Prev Imp 06','Curr Imp 06','Prev Imp 08','Curr Imp 08','Imp 06 U','Imp 08 U','Total Imp U','Prev Exp 09','Curr Exp','Exp U','Net U (Imp-Exp)'].join('\t')];
+    function v(n){ return (n === null || n === undefined) ? '' : String(n); }
+    c.rows.forEach(function(r){
+      lines.push([dmy(r.d), v(r.pa), r.a, v(r.pb), r.b, v(r.u06), v(r.u08), r.ti, v(r.px), r.x, v(r.ux), r.net].join('\t'));
+    });
+    lines.push(['','','','','','','','','','','Mizan', c.tot].join('\t'));
+    copyText(lines.join('\n')).then(function(ok){
+      toast(ok ? 'کاپی ہو گیا — Excel میں پیسٹ کریں' : 'کاپی نہیں ہو سکا');
+    });
+  }
+  function onBackup(){
+    copyText(JSON.stringify(db)).then(function(ok){
+      toast(ok ? 'بیک اپ کاپی ہو گیا — کہیں محفوظ کر لیں' : 'کاپی نہیں ہو سکا');
+    });
+  }
+  function onRestore(){
+    var txt = $('rs').value.trim();
+    if (!txt) { toast('پہلے بیک اپ پیسٹ کریں'); return; }
+    try {
+      db = norm(JSON.parse(txt));
+      persist(); $('rs').value = '';
+      viewing = null; pendingDel = null;
+      resetForm(); renderAll();
+      toast('ڈیٹا بحال ہو گیا');
+    } catch(e) { toast('یہ بیک اپ درست نہیں ہے'); }
+  }
+
+  // ---------- events ----------
+  $('tab-wazir').addEventListener('click', function(){ switchTo('wazir'); });
+  $('tab-kohat').addEventListener('click', function(){ switchTo('kohat'); });
+  ['fd','fa','fb','fx'].forEach(function(id){ $(id).addEventListener('input', preview); });
+  $('save').addEventListener('click', onSave);
+  $('cancel').addEventListener('click', function(){ resetForm(); renderList(); });
+  $('copy').addEventListener('click', function(){ copyExcel(calc(sorted(M().rows))); });
+  $('close').addEventListener('click', openClose);
+  $('closeok').addEventListener('click', confirmClose);
+  $('closeno').addEventListener('click', function(){ $('closepanel').hidden = true; });
+  $('bk').addEventListener('click', onBackup);
+  $('rsbtn').addEventListener('click', onRestore);
+  $('tablewrap').addEventListener('click', function(e){
+    var t = e.target.closest('button');
+    if (!t) return;
+    if (t.dataset.edit) startEdit(Number(t.dataset.edit));
+    else if (t.dataset.del) doDelete(Number(t.dataset.del));
+  });
+  $('archlist').addEventListener('click', function(e){
+    var t = e.target.closest('button');
+    if (!t || !t.dataset.arch) return;
+    var id = Number(t.dataset.arch);
+    viewing = (viewing === id) ? null : id;
+    pendingArchDel = false;
+    renderArchive(); renderArchView();
+    if (viewing) $('archview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  $('archview').addEventListener('click', function(e){
+    var t = e.target.closest('button');
+    if (t && t.dataset.a) onArchAction(t.dataset.a);
+  });
+
+  load();
+  resetForm();
+  renderAll();
+})();
+</script>
+</body>
+</html>
