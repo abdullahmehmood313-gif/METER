@@ -93,8 +93,18 @@ body:not([data-s=st]) #stc,body:not([data-s=st]) #app+details{display:none!impor
 .kp2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.kp2 div{background:var(--f);border:1px solid var(--ln);border-radius:14px;padding:6px 12px}.kp2 small{display:block;font-size:12.5px;color:var(--mu);line-height:1.6}.kp2 b{font:700 20px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate;display:block;text-align:right}
 .st{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:52px;border:0;border-bottom:1px solid var(--ln);background:none;color:var(--ink);font:inherit;text-align:right}
 .rr{display:flex;align-items:center;justify-content:space-around;gap:10px}
+:root[data-theme=dark]{--bg:#0a0e0d;--c:#141a18;--f:#0f1412;--ln:#232c29;--mu:#97a39e}
+:root[data-theme=dark] .card{box-shadow:none;border-color:rgba(255,255,255,.07)}:root[data-theme=dark] header{background:linear-gradient(135deg,#0d3b36,#0a1f24)}
+header{position:relative}.th{position:absolute;left:14px;top:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:18px;padding:0}
+.hero{background:linear-gradient(180deg,#141b19,#0a0e0d);border:1px solid rgba(255,255,255,.09)}
+.hero .nv{font:700 16px system-ui,sans-serif}.hero .nu{font:9px system-ui,sans-serif;opacity:.7}.hero .nl{font-size:11px}
+.hh2{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:6px}.hh2 b{font:700 15px system-ui,sans-serif}
+.sg{display:flex;gap:5px;margin-top:6px}.sg i{flex:1;height:14px;border-radius:5px;background:rgba(255,255,255,.14)}.sg i.on{background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.5)}
+.bn{left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px;border-radius:28px;border:1px solid var(--ln);background:var(--c);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.bn button{border:1px solid transparent;border-radius:22px}.bn button.on{color:#22c55e;background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.45)}
+.w{padding-bottom:112px}.toast{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 </style></head><body data-s="ho"><div class="w">
-<header><div class="hb"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="10" fill="rgba(255,255,255,.16)" stroke="#fff" stroke-opacity=".5"/><path d="M22 8 13 22h6l-2 10 10-15h-6z" fill="#ffd166"/></svg><div><h1>میٹر ریڈنگ</h1><div class="sb">نیٹ میٹرنگ ریکارڈ · گرین میٹر</div></div></div><div id="tabs" role="tablist"></div></header>
+<header><div class="hb"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="10" fill="rgba(255,255,255,.16)" stroke="#fff" stroke-opacity=".5"/><path d="M22 8 13 22h6l-2 10 10-15h-6z" fill="#ffd166"/></svg><div><h1>میٹر ریڈنگ</h1><div class="sb">نیٹ میٹرنگ ریکارڈ · گرین میٹر</div></div></div><button class="th" id="th" aria-label="تھیم بدلیں">◐</button><div id="tabs" role="tablist"></div></header>
 <section class="card" id="cf" hidden></section>
 <section class="card" id="emp" hidden><h2>خوش آمدید</h2><p class="nt" style="text-align:right">پہلے اپنا میٹر بنائیں: اس کا نام لکھیں اور بتائیں کہ اس کی اسکرین پر کون سی ریڈنگ کس نمبر پر ہے۔ پھر روزانہ یا ہر بار صرف نئی ریڈنگ ڈالنی ہے۔ یونٹ اور Net خود نکلیں گے۔</p><div class="bt"><button class="pr" data-new="1">اپنا میٹر بنائیں</button></div></section>
 <div id="app" hidden>
@@ -198,6 +208,16 @@ c.rows.forEach(function(r,i){var p=c.rows[i-1],a=[dmy(r.d)];m.ch.forEach(functio
 var z=H.map(function(){return''});z[H.length-2]='Mizan';z[H.length-1]=c.tot;L.push(z.join('\t'));
 ct(L.join('\n')).then(function(k){toast(k?'کاپی ہو گیا — Excel میں پیسٹ کریں':'کاپی نہیں ہو سکا')})}
 function hero(c){var m=M(),r=c.rows,ti=0,te=0,cu={};
+r.forEach(function(x){ti+=x.ti;te+=x.te;m.ch.forEach(function(k){if(x.u[k.k]!=null)cu[k.k]=(cu[k.k]||0)+x.u[k.k]})});
+var im=m.ch.filter(function(k){return k.t=='imp'}),n=te-ti,a=im[0],b=im.slice(1),vb=0;b.forEach(function(k){vb+=cu[k.k]||0});
+function nd(x,y,col,v,l,u){return '<circle cx="'+x+'" cy="'+y+'" r="34" fill="rgba(255,255,255,.04)" stroke="'+col+'" stroke-width="3"/><text class="nv" x="'+x+'" y="'+(y+3)+'">'+v+'</text><text class="nu" x="'+x+'" y="'+(y+17)+'">'+(u||'kWh')+'</text><text class="nl" x="'+x+'" y="'+(y+54)+'">'+esc(l)+'</text>'}
+function ln(d,col){return '<path class="fl" d="'+d+'" fill="none" stroke="'+col+'" stroke-width="2.5"/>'}
+var s='<svg viewBox="0 0 360 300" role="img" aria-label="توانائی کا بہاؤ">'+ln('M94 70H150Q180 70 180 112','#facc15')+ln('M180 112Q180 70 210 70H266','#f59e0b')+ln('M266 86H222Q196 86 196 112','#3b82f6')+(a?ln('M180 188Q180 240 150 240H94','#a855f7'):'')+(b.length?ln('M180 188Q180 240 210 240H266','#8b5cf6'):'')+
+'<circle cx="180" cy="150" r="38" fill="rgba(245,158,11,.1)" stroke="#f59e0b" stroke-width="3"/><path d="M184 128l-14 26h11l-4 20 17-30h-11z" fill="#f59e0b"/>'+
+nd(60,70,'#facc15',fmt(te),'ایکسپورٹ')+nd(300,70,'#3b82f6',sgn(n),'گرڈ بیلنس','Net')+(a?nd(60,240,'#a855f7',fmt(cu[a.k]||0),a.l):'')+(b.length?nd(300,240,'#8b5cf6',fmt(vb),b.length==1?b[0].l:'باقی امپورٹ'):'')+'</svg>';
+var tt=ti+te,pc=tt?Math.round(te/tt*100):0,sg='';for(var i=0;i<10;i++)sg+='<i'+(i<Math.round(pc/10)?' class="on"':'')+'></i>';
+$('hr').innerHTML='<div class="hh"><b>توانائی کا بہاؤ</b><span>'+(r.length?r.length+' انٹریز':'ابھی ڈیٹا نہیں')+'</span></div>'+s+'<div class="hh2"><span>ایکسپورٹ کا تناسب</span><b>'+pc+'%</b></div><div class="sg">'+sg+'</div><div class="hn"><span>'+(n>0?'آپ نے گرڈ کو زیادہ بجلی دی':n<0?'آپ نے گرڈ سے زیادہ بجلی لی':'امپورٹ اور ایکسپورٹ برابر')+'</span></div>'}
+function heroOld(c){var m=M(),r=c.rows,ti=0,te=0,cu={};
 r.forEach(function(x){ti+=x.ti;te+=x.te;m.ch.forEach(function(k){if(k.t=='imp'&&x.u[k.k]!=null)cu[k.k]=(cu[k.k]||0)+x.u[k.k]})});
 var n=te-ti,cl=['#60a5fa','#a5b4fc','#7dd3fc','#c4b5fd'],sm=0,bar='',lg='';
 m.ch.filter(function(k){return k.t=='imp'}).forEach(function(k,i){var v=Math.max(cu[k.k]||0,0);sm+=v;if(v>0)bar+='<i style="flex:'+v+';background:'+cl[i%4]+'"></i>';lg+='<span><u style="background:'+cl[i%4]+'"></u>'+esc(k.l)+' '+fmt(cu[k.k]||0)+'</span>'});
@@ -277,6 +297,9 @@ $('bk').addEventListener('click',function(){ct(JSON.stringify(db)).then(function
 $('rb').addEventListener('click',function(){var t=$('rs').value.trim();if(!t)return toast('پہلے بیک اپ پیسٹ کریں');
 try{var o=JSON.parse(t);if(Array.isArray(o.meters))db={meters:o.meters,act:o.act};else if(o.wazir||o.kohat)db={meters:conv(o),act:null};else throw 0;
 fix();save();$('rs').value='';all();toast('ڈیٹا بحال ہو گیا')}catch(e){toast('یہ بیک اپ درست نہیں ہے')}});
+var TH='dark';try{TH=localStorage.getItem('meter-theme')||'dark'}catch(e){}
+document.documentElement.dataset.theme=TH;
+$('th').addEventListener('click',function(){TH=TH=='dark'?'light':'dark';document.documentElement.dataset.theme=TH;try{localStorage.setItem('meter-theme',TH)}catch(e){}});
 $('bn').innerHTML=NV.map(function(n){return '<button data-g="'+n[0]+'"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+n[2]+'</svg>'+n[1]+'</button>'}).join('');
 $('bn').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(b.dataset.g)});
 $('stc').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;var q=t.dataset.q;if(q=='cf')cf(db.act);else if(q=='new')cf(null);else if(q=='xl'){var m=M();cx(m,calc(m,sorted(m.rows)))}});
