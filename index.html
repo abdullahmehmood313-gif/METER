@@ -71,12 +71,21 @@ header{background:linear-gradient(135deg,var(--red),#0b4f5f);padding:14px 16px 0
 .lg{font-size:13px;color:var(--mu)}.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin:0 4px 0 2px;vertical-align:middle}.b1{background:#3b7ddd}.b2{background:#f59e0b}
 #chv{color:var(--ink)}#chv svg{width:100%;height:auto;display:block;margin-top:6px}#chv text{font:9px system-ui,sans-serif;fill:var(--mu)}
 .tw{border-radius:16px}tbody tr:nth-child(even) td:not(.i):not(.e):not(.n):not(.d){background:var(--f)}
+.kp{display:none}
+.hero{margin-top:14px;border-radius:22px;padding:14px;color:#fff;background:radial-gradient(circle at 20% 0,#13806a,transparent 55%),linear-gradient(160deg,#0b3d4a,#0d6b57);box-shadow:0 10px 26px rgba(11,79,95,.3)}
+.hh{display:flex;justify-content:space-between;align-items:center}.hh b{font-size:16px}.hh span{font:12px system-ui,sans-serif;opacity:.8}
+.hero svg{width:100%;height:auto;display:block;margin:4px 0}.hero text{fill:#fff;font:11px 'Noto Nastaliq Urdu',serif;text-anchor:middle}.hero .v{font:700 13px system-ui,sans-serif}
+.fl{stroke-dasharray:6 6;animation:fl 1s linear infinite}@keyframes fl{to{stroke-dashoffset:-12}}
+@media(prefers-reduced-motion:reduce){.fl{animation:none}}
+.hn{text-align:center}.hn small{display:block;font-size:13px;opacity:.85}.hn b{font:700 40px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate;display:block;line-height:1.2}.hn .pos{color:#86efac}.hn .neg{color:#fcd34d}.hn span{font-size:13px;opacity:.9}
+.sp{display:flex;height:12px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.15);margin-top:12px}.sp i{display:block}
+.lgd{display:flex;flex-wrap:wrap;gap:2px 12px;margin-top:6px;font-size:12.5px}.lgd u{display:inline-block;width:9px;height:9px;border-radius:3px;margin-left:4px}
 </style></head><body><div class="w">
 <header><div class="hb"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="10" fill="rgba(255,255,255,.16)" stroke="#fff" stroke-opacity=".5"/><path d="M22 8 13 22h6l-2 10 10-15h-6z" fill="#ffd166"/></svg><div><h1>میٹر ریڈنگ</h1><div class="sb">نیٹ میٹرنگ ریکارڈ · گرین میٹر</div></div></div><div id="tabs" role="tablist"></div></header>
 <section class="card" id="cf" hidden></section>
 <section class="card" id="emp" hidden><h2>خوش آمدید</h2><p class="nt" style="text-align:right">پہلے اپنا میٹر بنائیں: اس کا نام لکھیں اور بتائیں کہ اس کی اسکرین پر کون سی ریڈنگ کس نمبر پر ہے۔ پھر روزانہ یا ہر بار صرف نئی ریڈنگ ڈالنی ہے۔ یونٹ اور Net خود نکلیں گے۔</p><div class="bt"><button class="pr" data-new="1">اپنا میٹر بنائیں</button></div></section>
 <div id="app" hidden>
-<div class="kp" id="kp"></div><section class="card"><h2 id="ft">نئی انٹری</h2>
+<section class="hero" id="hr"></section><div class="kp" id="kp"></div><section class="card"><h2 id="ft">نئی انٹری</h2>
 <label class="lb">تاریخ<input type="date" id="fd"></label><div id="fch"></div>
 <div class="net"><span>کل امپورٹ <b id="ti">—</b><br>کل ایکسپورٹ <b id="te">—</b><br>Net (ایکسپورٹ − امپورٹ)</span><span id="nu">—</span></div>
 <div class="bt"><button class="pr" id="sv">محفوظ کریں</button><button class="gh" id="cl" hidden>منسوخ</button></div></section>
@@ -145,7 +154,7 @@ if(act)h+='<td class="ac"><button class="sm" data-e="'+r.id+'">ایڈٹ</button>
 h+='</tr>'});return h+'</tbody></table>'}
 function lst(){var m=M(),c=calc(m,sorted(m.rows));$('mt').textContent=fmt(c.tot);$('mc').textContent=c.rows.length?c.rows.length+' انٹریز':'';
 $('tw').innerHTML=c.rows.length?tbl(m,c,true):'<div class="em">ابھی کوئی انٹری نہیں۔ اوپر پہلی ریڈنگ ڈالیں۔</div>';
-$('cy').hidden=!(c.rows.length&&c.rows[0].carry);arch();viz(c)}
+$('cy').hidden=!(c.rows.length&&c.rows[0].carry);arch();viz(c);hero(c)}
 function edit(id){var m=M(),r=m.rows.filter(function(q){return q.id===id})[0];if(!r)return;
 ed=id;pd=null;$('fd').value=r.d;m.ch.forEach(function(c){inp(c.k).value=r.v[c.k]==null?'':r.v[c.k]});
 $('sv').textContent='تبدیلی محفوظ کریں';$('ft').textContent='انٹری ایڈٹ';$('cl').hidden=false;pv();lst();window.scrollTo({top:0,behavior:'smooth'})}
@@ -175,6 +184,19 @@ var g=function(n){return n==null?'':n},L=[H.join('\t')];
 c.rows.forEach(function(r,i){var p=c.rows[i-1],a=[dmy(r.d)];m.ch.forEach(function(x){a.push(p?g(p.v[x.k]):'',g(r.v[x.k]),g(r.u[x.k]))});a.push(r.ti,r.te,r.net);L.push(a.join('\t'))});
 var z=H.map(function(){return''});z[H.length-2]='Mizan';z[H.length-1]=c.tot;L.push(z.join('\t'));
 ct(L.join('\n')).then(function(k){toast(k?'کاپی ہو گیا — Excel میں پیسٹ کریں':'کاپی نہیں ہو سکا')})}
+function hero(c){var m=M(),r=c.rows,ti=0,te=0,cu={};
+r.forEach(function(x){ti+=x.ti;te+=x.te;m.ch.forEach(function(k){if(k.t=='imp'&&x.u[k.k]!=null)cu[k.k]=(cu[k.k]||0)+x.u[k.k]})});
+var n=te-ti,cl=['#60a5fa','#a5b4fc','#7dd3fc','#c4b5fd'],sm=0,bar='',lg='';
+m.ch.filter(function(k){return k.t=='imp'}).forEach(function(k,i){var v=Math.max(cu[k.k]||0,0);sm+=v;if(v>0)bar+='<i style="flex:'+v+';background:'+cl[i%4]+'"></i>';lg+='<span><u style="background:'+cl[i%4]+'"></u>'+esc(k.l)+' '+fmt(cu[k.k]||0)+'</span>'});
+var t='<div class="hh"><b>توانائی کا بہاؤ</b><span>'+(r.length?r.length+' انٹریز':'ابھی ڈیٹا نہیں')+'</span></div><svg viewBox="0 0 360 120" role="img" aria-label="گرڈ، میٹر اور گھر کے درمیان امپورٹ اور ایکسپورٹ">'+
+'<path d="M44 8v12M26 74l18-54 18 54M32 52h24M29 64h30M36 38h16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="98">گرڈ</text>'+
+'<rect x="150" y="14" width="60" height="64" rx="12" fill="rgba(255,255,255,.14)" stroke="#fff" stroke-width="2"/><rect x="160" y="24" width="40" height="16" rx="4" fill="rgba(0,0,0,.3)"/><path d="M182 46l-10 14h8l-3 10 13-16h-8z" fill="#ffd166"/><text x="180" y="98">میٹر</text>'+
+'<path d="M292 46l24-22 24 22M298 44v32h36V44" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="340" cy="16" r="8" fill="#ffd166"/><text x="316" y="98">گھر اور سولر</text>'+
+'<line class="fl" x1="142" y1="28" x2="92" y2="28" stroke="#fbbf24" stroke-width="3"/><polygon points="92,22 80,28 92,34" fill="#fbbf24"/><text class="v" x="111" y="16" style="fill:#fbbf24">'+fmt(te)+'</text><text x="111" y="44" style="font-size:10px;fill:#fbbf24">ایکسپورٹ</text>'+
+'<line class="fl" x1="88" y1="66" x2="138" y2="66" stroke="#93c5fd" stroke-width="3"/><polygon points="138,60 150,66 138,72" fill="#93c5fd"/><text x="115" y="58" style="font-size:10px;fill:#93c5fd">امپورٹ</text><text class="v" x="115" y="86" style="fill:#93c5fd">'+fmt(ti)+'</text>'+
+'<line class="fl" x1="214" y1="46" x2="282" y2="46" stroke="#fff" stroke-opacity=".7" stroke-width="2.5"/><polygon points="282,40 292,46 282,52" fill="#fff" fill-opacity=".7"/></svg>'+
+'<div class="hn"><small>Net (ایکسپورٹ − امپورٹ)</small><b class="'+(n>=0?'pos':'neg')+'">'+sgn(n)+'</b><span>'+(n>0?'آپ نے گرڈ کو زیادہ بجلی دی':n<0?'آپ نے گرڈ سے زیادہ بجلی لی':'امپورٹ اور ایکسپورٹ برابر')+'</span></div>'+(sm>0?'<div class="sp">'+bar+'</div>':'')+'<div class="lgd">'+lg+'</div>';
+$('hr').innerHTML=t}
 function fk(n){return n>=1000?(Math.round(n/100)/10)+'k':fmt(n)}
 function viz(c){var r=c.rows,ti=0,te=0,l=r.length?r[r.length-1]:null;r.forEach(function(x){ti+=x.ti;te+=x.te});var n=te-ti;
 var T=[['کل امپورٹ',fmt(ti),'i','↓'],['کل ایکسپورٹ',fmt(te),'e','↑'],[n>=0?'Net (ایکسپورٹ زیادہ)':'Net (امپورٹ زیادہ)',sgn(n),n>=0?'g':'a','±'],['آخری ریڈنگ',l?dmy(l.d):'—','k','◷']];
