@@ -80,12 +80,25 @@ header{background:linear-gradient(135deg,var(--red),#0b4f5f);padding:14px 16px 0
 .hn{text-align:center}.hn small{display:block;font-size:13px;opacity:.85}.hn b{font:700 40px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate;display:block;line-height:1.2}.hn .pos{color:#86efac}.hn .neg{color:#fcd34d}.hn span{font-size:13px;opacity:.9}
 .sp{display:flex;height:12px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.15);margin-top:12px}.sp i{display:block}
 .lgd{display:flex;flex-wrap:wrap;gap:2px 12px;margin-top:6px;font-size:12.5px}.lgd u{display:inline-block;width:9px;height:9px;border-radius:3px;margin-left:4px}
-</style></head><body><div class="w">
+.w{padding-bottom:100px}
+.bn{position:fixed;left:0;right:0;bottom:0;z-index:8;display:flex;background:var(--c);border-top:1px solid var(--ln);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 20px rgba(0,0,0,.08)}.bn[hidden]{display:none}
+.bn button{flex:1;border:0;background:none;color:var(--mu);font:12px 'Noto Nastaliq Urdu',serif;display:flex;flex-direction:column;align-items:center;min-height:54px;line-height:1.7;border-radius:12px}.bn button.on{color:var(--red);background:var(--gn)}
+.toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+body:not([data-s=ho]) #hr,body:not([data-s=ho]) #chs{display:none!important}
+body:not([data-s=en]) #sen{display:none!important}
+body:not([data-s=hi]) #chs+.mz,body:not([data-s=hi]) .mz+.sh,body:not([data-s=hi]) #cp,body:not([data-s=hi]) #tw,body:not([data-s=hi]) #cy,body:not([data-s=hi]) #cy+.sh,body:not([data-s=hi]) #al,body:not([data-s=hi]) #av{display:none!important}
+body:not([data-s=rp]) #rp{display:none!important}
+body:not([data-s=st]) #stc,body:not([data-s=st]) #app+details{display:none!important}
+#rp text{font:9px system-ui,sans-serif;fill:var(--mu)}#rp svg{width:100%;height:auto;display:block;margin:8px 0;color:var(--ink)}
+.kp2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.kp2 div{background:var(--f);border:1px solid var(--ln);border-radius:14px;padding:6px 12px}.kp2 small{display:block;font-size:12.5px;color:var(--mu);line-height:1.6}.kp2 b{font:700 20px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate;display:block;text-align:right}
+.st{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:52px;border:0;border-bottom:1px solid var(--ln);background:none;color:var(--ink);font:inherit;text-align:right}
+.rr{display:flex;align-items:center;justify-content:space-around;gap:10px}
+</style></head><body data-s="ho"><div class="w">
 <header><div class="hb"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="10" fill="rgba(255,255,255,.16)" stroke="#fff" stroke-opacity=".5"/><path d="M22 8 13 22h6l-2 10 10-15h-6z" fill="#ffd166"/></svg><div><h1>میٹر ریڈنگ</h1><div class="sb">نیٹ میٹرنگ ریکارڈ · گرین میٹر</div></div></div><div id="tabs" role="tablist"></div></header>
 <section class="card" id="cf" hidden></section>
 <section class="card" id="emp" hidden><h2>خوش آمدید</h2><p class="nt" style="text-align:right">پہلے اپنا میٹر بنائیں: اس کا نام لکھیں اور بتائیں کہ اس کی اسکرین پر کون سی ریڈنگ کس نمبر پر ہے۔ پھر روزانہ یا ہر بار صرف نئی ریڈنگ ڈالنی ہے۔ یونٹ اور Net خود نکلیں گے۔</p><div class="bt"><button class="pr" data-new="1">اپنا میٹر بنائیں</button></div></section>
 <div id="app" hidden>
-<section class="hero" id="hr"></section><div class="kp" id="kp"></div><section class="card"><h2 id="ft">نئی انٹری</h2>
+<section class="hero" id="hr"></section><div class="kp" id="kp"></div><section class="card" id="sen"><h2 id="ft">نئی انٹری</h2>
 <label class="lb">تاریخ<input type="date" id="fd"></label><div id="fch"></div>
 <div class="net"><span>کل امپورٹ <b id="ti">—</b><br>کل ایکسپورٹ <b id="te">—</b><br>Net (ایکسپورٹ − امپورٹ)</span><span id="nu">—</span></div>
 <div class="bt"><button class="pr" id="sv">محفوظ کریں</button><button class="gh" id="cl" hidden>منسوخ</button></div></section>
@@ -93,10 +106,10 @@ header{background:linear-gradient(135deg,var(--red),#0b4f5f);padding:14px 16px 0
 <div class="sh"><h2>موجودہ مہینے کا ریکارڈ</h2><div class="bt" style="margin:0"><button class="sm so" id="mo">مہینہ بند کریں</button><button class="sm" id="cx">Excel کاپی</button><button class="sm" id="em">میٹر کی ترتیب</button></div></div>
 <section class="card" id="cp" hidden><h2>مہینہ بند کر کے محفوظ کریں</h2><p class="nt" id="ci" style="text-align:right"></p><label class="lb">اس مہینے کا نام<input type="text" id="cl2"></label><div class="bt"><button class="pr" id="cok">بند کریں اور نیا مہینہ شروع کریں</button><button class="gh" id="cno">منسوخ</button></div></section>
 <div class="tw" id="tw"></div><p class="nt" id="cy" hidden>پہلی انٹری پچھلے مہینے کی آخری ریڈنگ ہے، اگلے یونٹ اسی سے نکلیں گے۔</p>
-<div class="sh"><h2>پچھلے مہینے</h2></div><div id="al"></div><div id="av"></div>
+<div class="sh"><h2>پچھلے مہینے</h2></div><div id="al"></div><div id="av"></div><section class="card" id="rp"></section><section class="card" id="stc"><h2>ترتیبات</h2><button class="st" data-q="cf">میٹر کی ترتیب (نام اور چینل)<span>‹</span></button><button class="st" data-q="new">نیا میٹر بنائیں<span>‹</span></button><button class="st" data-q="xl">Excel کاپی (موجودہ مہینہ)<span>‹</span></button></section>
 </div>
 <details style="margin-top:18px"><summary style="min-height:44px;color:var(--mu);cursor:pointer">بیک اپ اور بحالی</summary><div class="card" style="margin-top:6px"><p class="nt" style="text-align:right;padding:0">ڈیٹا اسی فون میں محفوظ ہے۔ فون بدلنے یا براؤزر صاف کرنے سے پہلے بیک اپ کاپی کر کے WhatsApp یا Notes میں رکھ لیں۔</p><div class="bt"><button class="gh" id="bk" style="flex:1">بیک اپ کاپی کریں</button></div><label class="lb" style="margin-top:10px">بیک اپ یہاں پیسٹ کریں</label><textarea id="rs"></textarea><div class="bt"><button class="gh" id="rb" style="flex:1">بحال کریں</button></div></div></details>
-</div><div class="toast" id="ts" role="status" aria-live="polite"></div>
+</div><nav class="bn" id="bn" hidden aria-label="مینو"></nav><div class="toast" id="ts" role="status" aria-live="polite"></div>
 <script>
 (function(){
 var K='meter-reading-v2',MN=['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'];
@@ -143,7 +156,7 @@ if(bad)return toast('تاریخ اور سب ریڈنگز بھریں');
 if(m.rows.some(function(r){return r.d===d&&r.id!==ed}))return toast('اس تاریخ کی انٹری پہلے سے ہے');
 var was=!!ed;
 if(ed){var r=m.rows.filter(function(q){return q.id===ed})[0];if(r){r.d=d;r.v=v}}else m.rows.push({id:Date.now(),d:d,v:v});
-save();pd=null;reset();lst();toast(was?'انٹری اپڈیٹ ہو گئی':'انٹری محفوظ ہو گئی')}
+save();pd=null;reset();lst();toast(was?'انٹری اپڈیٹ ہو گئی':'انٹری محفوظ ہو گئی');go('ho')}
 function tbl(m,c,act){var h='<table><thead><tr><th class="d">Date</th>';
 m.ch.forEach(function(x){var q=x.t=='imp'?'i':'e';h+='<th class="'+q+'">'+esc(x.l)+'</th><th class="'+q+'">U</th>'});
 h+='<th class="n">کل امپورٹ</th><th class="e">کل ایکسپورٹ</th><th class="n">Net</th>'+(act?'<th></th>':'')+'</tr></thead><tbody>';
@@ -157,7 +170,7 @@ $('tw').innerHTML=c.rows.length?tbl(m,c,true):'<div class="em">ابھی کوئی
 $('cy').hidden=!(c.rows.length&&c.rows[0].carry);arch();viz(c);hero(c)}
 function edit(id){var m=M(),r=m.rows.filter(function(q){return q.id===id})[0];if(!r)return;
 ed=id;pd=null;$('fd').value=r.d;m.ch.forEach(function(c){inp(c.k).value=r.v[c.k]==null?'':r.v[c.k]});
-$('sv').textContent='تبدیلی محفوظ کریں';$('ft').textContent='انٹری ایڈٹ';$('cl').hidden=false;pv();lst();window.scrollTo({top:0,behavior:'smooth'})}
+$('sv').textContent='تبدیلی محفوظ کریں';$('ft').textContent='انٹری ایڈٹ';$('cl').hidden=false;pv();lst();go('en')}
 function del(id){if(pd!==id){pd=id;lst();return}var m=M();m.rows=m.rows.filter(function(q){return q.id!==id});pd=null;if(ed===id)reset();save();lst();pv();toast('انٹری حذف ہو گئی')}
 function dl(rows){var f=rows[0].d.split('-');return MN[+f[1]-1]+' '+f[0]}
 function oc(){var m=M(),r=sorted(m.rows);if(r.length<2)return toast('مہینہ بند کرنے کے لیے کم از کم دو انٹریز چاہئیں');
@@ -197,6 +210,22 @@ var t='<div class="hh"><b>توانائی کا بہاؤ</b><span>'+(r.length?r.le
 '<line class="fl" x1="214" y1="46" x2="282" y2="46" stroke="#fff" stroke-opacity=".7" stroke-width="2.5"/><polygon points="282,40 292,46 282,52" fill="#fff" fill-opacity=".7"/></svg>'+
 '<div class="hn"><small>Net (ایکسپورٹ − امپورٹ)</small><b class="'+(n>=0?'pos':'neg')+'">'+sgn(n)+'</b><span>'+(n>0?'آپ نے گرڈ کو زیادہ بجلی دی':n<0?'آپ نے گرڈ سے زیادہ بجلی لی':'امپورٹ اور ایکسپورٹ برابر')+'</span></div>'+(sm>0?'<div class="sp">'+bar+'</div>':'')+'<div class="lgd">'+lg+'</div>';
 $('hr').innerHTML=t}
+var NV=[['ho','ہوم','<path d="M3 11l9-8 9 8M5 10v10h14V10"/>'],['en','انٹری','<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'],['hi','ریکارڈ','<path d="M4 6h16M4 12h16M4 18h10"/>'],['rp','رپورٹ','<path d="M5 20V10M12 20V4M19 20v-7"/>'],['st','ترتیب','<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>']];
+function go(s){document.body.dataset.s=s;document.querySelectorAll('#bn button').forEach(function(b){b.classList.toggle('on',b.dataset.g==s)});if(s=='rp')rep();window.scrollTo({top:0,behavior:'smooth'})}
+function mon(m){var a=[];function t(rows,l){var c=calc(m,sorted(rows)),ti=0,te=0;c.rows.forEach(function(x){ti+=x.ti;te+=x.te});return{l:l,a:ti,b:te,n:te-ti}}
+m.arch.slice().reverse().forEach(function(x){a.push(t(x.rows,x.label))});if(m.rows.length>1)a.push(t(m.rows,'موجودہ'));return a}
+function bc(it){var W=360,H=170,t0=16,b0=28,mx=1;it.forEach(function(x){mx=Math.max(mx,x.a,x.b)});var sw=(W-16)/it.length,bw=Math.min(22,sw/2.6),s='<svg viewBox="0 0 '+W+' '+H+'">';
+it.forEach(function(x,i){var cx=8+sw*(i+.5);[[x.a,'#3b7ddd',-bw-1],[x.b,'#f59e0b',1]].forEach(function(b){var h=(H-b0-t0)*Math.max(b[0],0)/mx,y=H-b0-h;s+='<rect x="'+(cx+b[2])+'" y="'+y+'" width="'+bw+'" height="'+Math.max(h,1)+'" rx="3" fill="'+b[1]+'"/><text x="'+(cx+b[2]+bw/2)+'" y="'+(y-3)+'" text-anchor="middle">'+fk(b[0])+'</text>'});s+='<text x="'+cx+'" y="'+(H-10)+'" text-anchor="middle">'+esc(x.l.slice(0,10))+'</text>'});return s+'</svg>'}
+function lc(it){var W=360,H=130,p=26,v=it.map(function(x){return x.n}),mn=Math.min(0,Math.min.apply(0,v)),mx=Math.max(0,Math.max.apply(0,v)),r=(mx-mn)||1,sx=it.length>1?(W-2*p)/(it.length-1):0,Y=function(a){return H-24-(H-48)*(a-mn)/r},pt=v.map(function(a,i){return[p+sx*i,Y(a)]});
+var s='<svg viewBox="0 0 '+W+' '+H+'"><line x1="8" x2="352" y1="'+Y(0)+'" y2="'+Y(0)+'" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>';
+if(pt.length>1)s+='<polyline fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round" points="'+pt.map(function(q){return q.join(',')}).join(' ')+'"/>';
+pt.forEach(function(q,i){s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="4.5" fill="#16a34a"/><text x="'+q[0]+'" y="'+(q[1]-9)+'" text-anchor="middle">'+sgn(v[i])+'</text><text x="'+q[0]+'" y="'+(H-6)+'" text-anchor="middle">'+esc(it[i].l.slice(0,10))+'</text>'});return s+'</svg>'}
+function dn(a,b){var t=a+b||1,R=42,C=2*Math.PI*R;return '<svg viewBox="0 0 120 120" style="width:130px"><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#f59e0b" stroke-width="16"/><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#3b7ddd" stroke-width="16" stroke-dasharray="'+(a/t*C)+' '+C+'" transform="rotate(-90 60 60)"/><text x="60" y="62" text-anchor="middle" style="font:700 18px system-ui;fill:var(--ink)">'+Math.round(a/t*100)+'%</text></svg>'}
+function rep(){var m=M();if(!m)return;var d=mon(m),ti=0,te=0;d.forEach(function(x){ti+=x.a;te+=x.b});var k=d.length||1,w=d.slice(-6);
+var h='<h2>ماہانہ رپورٹ</h2><div class="kp2"><div><small>کل امپورٹ</small><b>'+fmt(ti)+'</b></div><div><small>کل ایکسپورٹ</small><b>'+fmt(te)+'</b></div><div><small>مجموعی Net</small><b>'+sgn(te-ti)+'</b></div><div><small>ماہانہ اوسط امپورٹ / ایکسپورٹ</small><b>'+fmt(ti/k)+' / '+fmt(te/k)+'</b></div></div>';
+if(!d.length)h+='<div class="em">رپورٹ کے لیے کم از کم دو انٹریز ڈالیں۔ مہینہ بند کرنے پر ہر مہینے کا موازنہ یہاں آئے گا۔</div>';
+else h+='<h2 style="margin-top:14px">ماہانہ موازنہ <span class="lg"><i class="b1"></i>امپورٹ <i class="b2"></i>ایکسپورٹ</span></h2>'+bc(w)+'<h2>Net کا رجحان</h2>'+lc(w)+'<h2>امپورٹ اور ایکسپورٹ کا تناسب</h2><div class="rr">'+dn(ti,te)+'<div class="lg" style="line-height:2.2"><i class="b1"></i>امپورٹ '+fmt(ti)+'<br><i class="b2"></i>ایکسپورٹ '+fmt(te)+'</div></div>';
+$('rp').innerHTML=h}
 function fk(n){return n>=1000?(Math.round(n/100)/10)+'k':fmt(n)}
 function viz(c){var r=c.rows,ti=0,te=0,l=r.length?r[r.length-1]:null;r.forEach(function(x){ti+=x.ti;te+=x.te});var n=te-ti;
 var T=[['کل امپورٹ',fmt(ti),'i','↓'],['کل ایکسپورٹ',fmt(te),'e','↑'],[n>=0?'Net (ایکسپورٹ زیادہ)':'Net (امپورٹ زیادہ)',sgn(n),n>=0?'g':'a','±'],['آخری ریڈنگ',l?dmy(l.d):'—','k','◷']];
@@ -232,8 +261,8 @@ cfg.ch.forEach(function(c){c.l=c.l.trim();c.s=c.s.trim()});
 if(cfg.id){var m=db.meters.filter(function(q){return q.id===cfg.id})[0];m.name=cfg.name.trim();m.ch=cfg.ch}
 else{var n={id:'m'+Date.now(),name:cfg.name.trim(),ch:cfg.ch,rows:[],arch:[]};db.meters.push(n);db.act=n.id}
 save();$('cf').hidden=true;all();toast('میٹر محفوظ ہو گیا')}}
-function all(){var has=db.meters.length>0;$('emp').hidden=has;$('app').hidden=!has;tabs();if(has){pd=null;vw=null;ed=null;form();lst()}}
-$('tabs').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;if(t.dataset.new)return cf(null);db.act=t.dataset.m;save();$('cf').hidden=true;$('cp').hidden=true;all()});
+function all(){var has=db.meters.length>0;$('bn').hidden=!has;$('emp').hidden=has;$('app').hidden=!has;tabs();if(has){pd=null;vw=null;ed=null;form();lst()}}
+$('tabs').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;if(t.dataset.new)return cf(null);db.act=t.dataset.m;save();$('cf').hidden=true;$('cp').hidden=true;all();if(document.body.dataset.s=='rp')rep()});
 $('emp').addEventListener('click',function(e){if(e.target.closest('[data-new]'))cf(null)});
 $('cf').addEventListener('click',cfa);
 $('em').addEventListener('click',function(){cf(db.act)});
@@ -248,6 +277,9 @@ $('bk').addEventListener('click',function(){ct(JSON.stringify(db)).then(function
 $('rb').addEventListener('click',function(){var t=$('rs').value.trim();if(!t)return toast('پہلے بیک اپ پیسٹ کریں');
 try{var o=JSON.parse(t);if(Array.isArray(o.meters))db={meters:o.meters,act:o.act};else if(o.wazir||o.kohat)db={meters:conv(o),act:null};else throw 0;
 fix();save();$('rs').value='';all();toast('ڈیٹا بحال ہو گیا')}catch(e){toast('یہ بیک اپ درست نہیں ہے')}});
-load();all();
+$('bn').innerHTML=NV.map(function(n){return '<button data-g="'+n[0]+'"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+n[2]+'</svg>'+n[1]+'</button>'}).join('');
+$('bn').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(b.dataset.g)});
+$('stc').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;var q=t.dataset.q;if(q=='cf')cf(db.act);else if(q=='new')cf(null);else if(q=='xl'){var m=M();cx(m,calc(m,sorted(m.rows)))}});
+load();all();go('ho');
 })();
 </script></body></html>
