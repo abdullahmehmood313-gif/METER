@@ -1,130 +1,79 @@
-<!DOCTYPE html><html lang="ur" dir="rtl"><head><meta charset="utf-8">
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>میٹر ریڈنگ</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<title>Green Meter</title>
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f5f2ee;--c:#fff;--ink:#1d1a18;--mu:#6c655f;--ln:#e2dcd5;--red:#a51d1d;--im:#dce7f8;--imi:#1f4e9a;--ex:#f9dfc8;--exi:#9c4a0b;--gn:#d5ecd9;--gni:#1c6a33;--wn:#b45309;--f:#faf8f5}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#161413;--c:#211e1c;--ink:#f1ece7;--mu:#a59d95;--ln:#38332f;--red:#c93a3a;--im:#1e2c46;--imi:#8db2f0;--ex:#4a2f18;--exi:#f2b581;--gn:#1c3a26;--gni:#8fd6a3;--wn:#f0a94a;--f:#191715}}
-:root[data-theme=dark]{--bg:#161413;--c:#211e1c;--ink:#f1ece7;--mu:#a59d95;--ln:#38332f;--red:#c93a3a;--im:#1e2c46;--imi:#8db2f0;--ex:#4a2f18;--exi:#f2b581;--gn:#1c3a26;--gni:#8fd6a3;--wn:#f0a94a;--f:#191715}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;line-height:2;font-size:16px}
-.w{max-width:720px;margin:0 auto;padding:0 14px 50px}
-header{background:var(--red);color:#fff;margin:0 -14px;padding:12px 14px 0}
-h1{margin:0;font-size:21px;text-align:center;line-height:2.1}
-#tabs{display:flex;gap:6px;overflow-x:auto;margin-top:4px}
-.tab{flex:0 0 auto;min-width:96px;border:0;background:rgba(255,255,255,.18);color:#fff;font:inherit;padding:2px 14px 0;min-height:46px;border-radius:12px 12px 0 0}
-.tab[aria-selected=true]{background:var(--bg);color:var(--ink);font-weight:700}
-:focus-visible{outline:3px solid var(--imi);outline-offset:2px}
-.card{background:var(--c);border:1px solid var(--ln);border-radius:14px;padding:14px;margin-top:14px}
-h2{margin:0 0 4px;font-size:17px;line-height:2.1}
-.lb{display:block;font-size:14px;color:var(--mu)}
-input,select{width:100%;min-height:48px;border:1.5px solid var(--ln);background:var(--f);color:var(--ink);border-radius:10px;padding:6px 12px;font:18px system-ui,sans-serif}
-input[type=number],input[type=date]{direction:ltr;text-align:center}
-input[type=text]{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;line-height:2}
-textarea{width:100%;min-height:80px;direction:ltr;border:1.5px solid var(--ln);background:var(--f);color:var(--ink);border-radius:10px;padding:8px}
-.ch{border-radius:12px;padding:10px 12px;margin-top:10px}.ch.imp{background:var(--im)}.ch.exp{background:var(--ex)}
-.nm{font:700 15px system-ui,sans-serif}.imp .nm{color:var(--imi)}.exp .nm{color:var(--exi)}
-.mt{display:flex;justify-content:space-between;font-size:14px;color:var(--mu);line-height:1.8;margin-top:6px}
-.mt b{font:700 16px system-ui,sans-serif;color:var(--ink);direction:ltr;unicode-bidi:isolate}
-.wn{color:var(--wn)!important}
-.net{background:var(--gn);color:var(--gni);border-radius:12px;padding:8px 14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:14px;line-height:1.9}
-.net b{font:700 16px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate}
-#nu{font:700 26px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate}
-button{font:inherit;cursor:pointer}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#f1f5f3;--c:#fff;--f:#f5f8f7;--ink:#14201c;--mu:#64756f;--ln:#dde6e2;--ac:#16a34a;--im:#3b82f6;--ex:#f59e0b;--rd:#dc2626}
+:root[data-theme=dark]{--bg:#090d0c;--c:#131a18;--f:#0e1412;--ink:#eaf2ee;--mu:#93a39d;--ln:#232d2a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);background-image:radial-gradient(circle at 50% -10%,var(--tint,transparent),transparent 62%);background-attachment:fixed;color:var(--ink);font:16px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;transition:background .6s}
+.w{max-width:640px;margin:0 auto;padding:12px 14px 120px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:6px 2px}
+h1{margin:0;font-size:20px;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+h1 svg{width:28px;height:28px}
+h2{margin:0 0 8px;font-size:16px}
+.th{width:38px;height:38px;border-radius:50%;border:1px solid var(--ln);background:var(--c);color:var(--ink);font-size:17px;padding:0}
+#tabs{display:flex;gap:8px;overflow-x:auto;padding:6px 0 4px}
+.tab{flex:0 0 auto;border:1px solid var(--ln);background:var(--c);color:var(--mu);border-radius:999px;padding:7px 16px;font:inherit;font-size:14px}
+.tab[aria-selected=true]{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600}
+.card{background:var(--c);border:1px solid var(--ln);border-radius:20px;padding:14px;margin-top:12px}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--im);outline-offset:2px}
+input,select,textarea{width:100%;min-height:48px;border:1.5px solid var(--ln);background:var(--f);color:var(--ink);border-radius:12px;padding:6px 12px;font:17px system-ui,sans-serif}
+textarea{min-height:80px;font-size:12px}
+label{display:block;font-size:13px;color:var(--mu)}
+.hero{border-radius:24px;padding:18px 16px;color:#fff;margin-top:12px;border:1px solid rgba(255,255,255,.1);transition:background .6s}
+.hero small{opacity:.8;font-size:13px}.nb{font-size:56px;font-weight:800;line-height:1.1;letter-spacing:-1px}.nb em{font-size:16px;font-style:normal;font-weight:500;margin-left:6px;opacity:.85}
+.ns{font-size:14px;opacity:.95;margin-bottom:12px}
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tl div{background:rgba(0,0,0,.25);border-radius:16px;padding:8px 12px}.tl small{display:block}.tl b{font-size:24px}
+.sp{display:flex;height:10px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.18);margin-top:14px}.sp i{display:block}
+.lgd{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:8px;font-size:13px}.lgd u{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px}
+.ch{border-radius:16px;padding:10px 12px;margin-top:10px;border-left:5px solid var(--im);background:var(--f)}.ch.exp{border-color:var(--ex)}
+.nm{font-weight:700;font-size:14px}.mt{display:flex;justify-content:space-between;color:var(--mu);font-size:13px;margin-top:4px}.mt b{color:var(--ink)}
+.wn{color:var(--ex)!important}
+.net{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:10px 14px;border-radius:14px;background:var(--f);font-size:14px}.net b{font-size:26px}
 .bt{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.pr{flex:1;min-height:50px;border:0;border-radius:12px;background:var(--red);color:#fff;font-size:18px;font-weight:700}
-.gh{min-height:50px;padding:0 14px;border:1.5px solid var(--ln);border-radius:12px;background:transparent;color:var(--ink);font-size:15px}
-.sm{min-height:40px;padding:0 12px;border:1.5px solid var(--ln);border-radius:10px;background:transparent;color:var(--ink);font-size:14px}
-.dn{color:var(--wn);border-color:var(--wn)}.so{background:var(--red);color:#fff;border-color:var(--red);font-weight:700}
-.mz{background:var(--gn);color:var(--gni);border-radius:14px;padding:8px 16px;margin-top:14px;display:flex;justify-content:space-between;align-items:center}
-.mz .bg{font:700 28px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate}.mz small{display:block;font-size:13px;line-height:1.7}
-.sh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:20px}.sh h2{margin:0}
-.tw{overflow-x:auto;margin-top:10px;border:1px solid var(--ln);border-radius:12px;background:var(--c)}
-table{border-collapse:collapse;width:100%;font:14px system-ui,sans-serif}
-th,td{padding:8px 7px;text-align:center;border-bottom:1px solid var(--ln);white-space:nowrap;direction:ltr}th{font-size:12px}
-.d{position:sticky;right:0;background:var(--c);border-left:1px solid var(--ln)}
-.i{background:var(--im)}.e{background:var(--ex)}.n{background:var(--gn);font-weight:700}
-.ac{display:flex;gap:6px;direction:rtl}
-.em,.nt{padding:14px 8px;text-align:center;color:var(--mu);font-size:14px;line-height:2}
-.chip{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;min-height:52px;border:1.5px solid var(--ln);background:var(--c);color:var(--ink);border-radius:12px;padding:2px 14px;margin-top:8px;text-align:right}
-.chip small{font:13px system-ui,sans-serif;color:var(--mu)}.chip.on{border:2px solid var(--red)}
-.cr{display:grid;grid-template-columns:1fr 70px 100px auto;gap:6px;margin-top:8px}.cr input,.cr select{font-size:14px;padding:4px 6px;min-height:44px}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:2px 18px;border-radius:12px;font-size:15px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90%;text-align:center;z-index:9}.toast.s{opacity:1}
-:root{--red:#0d6b57;--bg:#eef3f1;--c:#fff;--ln:#dbe5e1;--f:#f6faf8;--im:#e1ecfb;--imi:#2563c9;--ex:#fdecc8;--exi:#a16207;--gn:#d4f0e2;--gni:#0f6b44}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--red:#16876c;--bg:#0f1715;--c:#18221f;--ln:#2a3a35;--f:#121b19;--im:#1a2b4a;--imi:#8db6f5;--ex:#4a3513;--exi:#f6c26b;--gn:#173a2b;--gni:#7fdcae}}
-:root[data-theme=dark]{--red:#16876c;--bg:#0f1715;--c:#18221f;--ln:#2a3a35;--f:#121b19;--im:#1a2b4a;--imi:#8db6f5;--ex:#4a3513;--exi:#f6c26b;--gn:#173a2b;--gni:#7fdcae}
-body{background-image:radial-gradient(circle at 100% 0,rgba(13,107,87,.12),transparent 45%)}
-header{background:linear-gradient(135deg,var(--red),#0b4f5f);padding:14px 16px 0;border-radius:0 0 22px 22px;box-shadow:0 8px 24px rgba(11,79,95,.28)}
-.hb{display:flex;align-items:center;gap:12px;justify-content:center}.hb h1{font-size:22px;line-height:1.9}.sb{font:12px system-ui,sans-serif;opacity:.8;text-align:center}
-.tab{border-radius:999px;min-height:40px;background:rgba(255,255,255,.14);margin-bottom:12px}.tab[aria-selected=true]{background:#fff;color:#0b4f5f;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.card{border-radius:18px;box-shadow:0 2px 14px rgba(15,60,50,.07)}
-.ch{border-radius:14px}.ch.imp{border-right:5px solid #3b7ddd}.ch.exp{border-right:5px solid #f59e0b}
-.pr{background:linear-gradient(135deg,var(--red),#0b4f5f);box-shadow:0 4px 12px rgba(13,107,87,.3);border-radius:14px}
-.mz{border-radius:16px;box-shadow:0 2px 10px rgba(15,60,50,.08)}
-.kp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.kt{position:relative;border-radius:16px;padding:8px 12px 6px;display:flex;flex-direction:column;background:var(--c);border:1px solid var(--ln);box-shadow:0 2px 10px rgba(15,60,50,.06)}
-.kt b{font:700 24px system-ui,sans-serif;direction:ltr;text-align:right;unicode-bidi:isolate}.kt small{font-size:13px;color:var(--mu);line-height:1.6}
-.ki{position:absolute;left:10px;top:8px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 16px system-ui,sans-serif}
-.kt.i .ki{background:var(--im);color:var(--imi)}.kt.e .ki{background:var(--ex);color:var(--exi)}.kt.g .ki,.kt.a .ki{background:var(--gn);color:var(--gni)}.kt.k .ki{background:var(--f);color:var(--mu)}
-.kt.g b{color:var(--gni)}.kt.a b{color:var(--exi)}
-.sh2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.sh2 h2{margin:0}
-.lg{font-size:13px;color:var(--mu)}.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin:0 4px 0 2px;vertical-align:middle}.b1{background:#3b7ddd}.b2{background:#f59e0b}
-#chv{color:var(--ink)}#chv svg{width:100%;height:auto;display:block;margin-top:6px}#chv text{font:9px system-ui,sans-serif;fill:var(--mu)}
-.tw{border-radius:16px}tbody tr:nth-child(even) td:not(.i):not(.e):not(.n):not(.d){background:var(--f)}
-.kp{display:none}
-.hero{margin-top:14px;border-radius:22px;padding:14px;color:#fff;background:radial-gradient(circle at 20% 0,#13806a,transparent 55%),linear-gradient(160deg,#0b3d4a,#0d6b57);box-shadow:0 10px 26px rgba(11,79,95,.3)}
-.hh{display:flex;justify-content:space-between;align-items:center}.hh b{font-size:16px}.hh span{font:12px system-ui,sans-serif;opacity:.8}
-.hero svg{width:100%;height:auto;display:block;margin:4px 0}.hero text{fill:#fff;font:11px 'Noto Nastaliq Urdu',serif;text-anchor:middle}.hero .v{font:700 13px system-ui,sans-serif}
-.fl{stroke-dasharray:6 6;animation:fl 1s linear infinite}@keyframes fl{to{stroke-dashoffset:-12}}
-@media(prefers-reduced-motion:reduce){.fl{animation:none}}
-.hn{text-align:center}.hn small{display:block;font-size:13px;opacity:.85}.hn b{font:700 40px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate;display:block;line-height:1.2}.hn .pos{color:#86efac}.hn .neg{color:#fcd34d}.hn span{font-size:13px;opacity:.9}
-.sp{display:flex;height:12px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.15);margin-top:12px}.sp i{display:block}
-.lgd{display:flex;flex-wrap:wrap;gap:2px 12px;margin-top:6px;font-size:12.5px}.lgd u{display:inline-block;width:9px;height:9px;border-radius:3px;margin-left:4px}
-.w{padding-bottom:100px}
-.bn{position:fixed;left:0;right:0;bottom:0;z-index:8;display:flex;background:var(--c);border-top:1px solid var(--ln);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 20px rgba(0,0,0,.08)}.bn[hidden]{display:none}
-.bn button{flex:1;border:0;background:none;color:var(--mu);font:12px 'Noto Nastaliq Urdu',serif;display:flex;flex-direction:column;align-items:center;min-height:54px;line-height:1.7;border-radius:12px}.bn button.on{color:var(--red);background:var(--gn)}
-.toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-body:not([data-s=ho]) #hr,body:not([data-s=ho]) #chs{display:none!important}
-body:not([data-s=en]) #sen{display:none!important}
-body:not([data-s=hi]) #chs+.mz,body:not([data-s=hi]) .mz+.sh,body:not([data-s=hi]) #cp,body:not([data-s=hi]) #tw,body:not([data-s=hi]) #cy,body:not([data-s=hi]) #cy+.sh,body:not([data-s=hi]) #al,body:not([data-s=hi]) #av{display:none!important}
-body:not([data-s=rp]) #rp{display:none!important}
-body:not([data-s=st]) #stc,body:not([data-s=st]) #app+details{display:none!important}
-#rp text{font:9px system-ui,sans-serif;fill:var(--mu)}#rp svg{width:100%;height:auto;display:block;margin:8px 0;color:var(--ink)}
-.kp2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.kp2 div{background:var(--f);border:1px solid var(--ln);border-radius:14px;padding:6px 12px}.kp2 small{display:block;font-size:12.5px;color:var(--mu);line-height:1.6}.kp2 b{font:700 20px system-ui,sans-serif;direction:ltr;unicode-bidi:isolate;display:block;text-align:right}
-.st{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:52px;border:0;border-bottom:1px solid var(--ln);background:none;color:var(--ink);font:inherit;text-align:right}
+.pr{flex:1;min-height:50px;border:0;border-radius:14px;background:var(--ac);color:#fff;font-size:17px;font-weight:700}
+.gh{min-height:44px;padding:0 14px;border:1.5px solid var(--ln);border-radius:12px;background:transparent;color:var(--ink);font-size:14px}
+.dn{color:var(--rd);border-color:var(--rd)}
+.sh{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:6px}.sh h2{margin:0}
+.tw{overflow-x:auto;margin-top:10px;border:1px solid var(--ln);border-radius:16px;background:var(--c)}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:8px 8px;text-align:center;border-bottom:1px solid var(--ln);white-space:nowrap}th{color:var(--mu);font-weight:600;font-size:12px}
+td.n{font-weight:700}.pos{color:#22c55e}.neg{color:var(--rd)}
+.em{padding:16px;text-align:center;color:var(--mu);font-size:14px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--ln)}
+.st{display:flex;justify-content:space-between;width:100%;min-height:50px;border:0;border-bottom:1px solid var(--ln);background:none;color:var(--ink);text-align:left;align-items:center}
+.cr{display:grid;grid-template-columns:1fr 64px 104px auto;gap:6px;margin-top:8px}.cr input,.cr select{font-size:14px;min-height:42px;padding:4px 8px}
+#chv svg{width:100%;height:auto;display:block}#chv text{font:9px system-ui,sans-serif;fill:var(--mu)}
+.bn{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:8;display:flex;gap:4px;padding:6px;border-radius:30px;background:var(--c);border:1px solid var(--ln);box-shadow:0 10px 30px rgba(0,0,0,.35)}.bn[hidden]{display:none}
+.bn button{flex:1;border:1px solid transparent;border-radius:24px;background:none;color:var(--mu);font-size:11px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0}.bn button.on{color:var(--ac);background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.45)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 18px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90%;z-index:9;text-align:center}.toast.s{opacity:1}
+body:not([data-s=ho]) #ho,body:not([data-s=en]) #en,body:not([data-s=hi]) #hi,body:not([data-s=st]) #st{display:none}
+body:not([data-s=rp]) #rp{display:none}
+#av td:last-child,#av th:last-child{display:none}
+.chip{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;min-height:54px;border:1px solid var(--ln);background:var(--f);color:var(--ink);border-radius:14px;padding:6px 14px;margin-top:8px;text-align:left}.chip.on{border-color:var(--ac)}.chip small{color:var(--mu)}
+.kp2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kp2 div{background:var(--f);border:1px solid var(--ln);border-radius:14px;padding:6px 12px}.kp2 small{display:block;font-size:12px;color:var(--mu)}.kp2 b{font-size:19px}
 .rr{display:flex;align-items:center;justify-content:space-around;gap:10px}
-:root[data-theme=dark]{--bg:#0a0e0d;--c:#141a18;--f:#0f1412;--ln:#232c29;--mu:#97a39e}
-:root[data-theme=dark] .card{box-shadow:none;border-color:rgba(255,255,255,.07)}:root[data-theme=dark] header{background:linear-gradient(135deg,#0d3b36,#0a1f24)}
-header{position:relative}.th{position:absolute;left:14px;top:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:18px;padding:0}
-.hero{background:linear-gradient(180deg,#141b19,#0a0e0d);border:1px solid rgba(255,255,255,.09)}
-.hero .nv{font:700 16px system-ui,sans-serif}.hero .nu{font:9px system-ui,sans-serif;opacity:.7}.hero .nl{font-size:11px}
-.hh2{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:6px}.hh2 b{font:700 15px system-ui,sans-serif}
-.sg{display:flex;gap:5px;margin-top:6px}.sg i{flex:1;height:14px;border-radius:5px;background:rgba(255,255,255,.14)}.sg i.on{background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.5)}
-.bn{left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px;border-radius:28px;border:1px solid var(--ln);background:var(--c);box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.bn button{border:1px solid transparent;border-radius:22px}.bn button.on{color:#22c55e;background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.45)}
-.w{padding-bottom:112px}.toast{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+#rp text{font:9px system-ui,sans-serif;fill:var(--mu)}#rp svg{width:100%;height:auto;display:block;margin:8px 0;color:var(--ink)}
 </style></head><body data-s="ho"><div class="w">
-<header><div class="hb"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="10" fill="rgba(255,255,255,.16)" stroke="#fff" stroke-opacity=".5"/><path d="M22 8 13 22h6l-2 10 10-15h-6z" fill="#ffd166"/></svg><div><h1>میٹر ریڈنگ</h1><div class="sb">نیٹ میٹرنگ ریکارڈ · گرین میٹر</div></div></div><button class="th" id="th" aria-label="تھیم بدلیں">◐</button><div id="tabs" role="tablist"></div></header>
+<div class="top"><h1><svg viewBox="0 0 40 40"><rect x="3" y="3" width="34" height="34" rx="10" fill="#16a34a"/><path d="M22 8 13 22h6l-2 10 10-15h-6z" fill="#fde047"/></svg>Green Meter</h1><button class="th" id="th" aria-label="Toggle theme">◐</button></div>
+<div id="tabs" role="tablist"></div>
 <section class="card" id="cf" hidden></section>
-<section class="card" id="emp" hidden><h2>خوش آمدید</h2><p class="nt" style="text-align:right">پہلے اپنا میٹر بنائیں: اس کا نام لکھیں اور بتائیں کہ اس کی اسکرین پر کون سی ریڈنگ کس نمبر پر ہے۔ پھر روزانہ یا ہر بار صرف نئی ریڈنگ ڈالنی ہے۔ یونٹ اور Net خود نکلیں گے۔</p><div class="bt"><button class="pr" data-new="1">اپنا میٹر بنائیں</button></div></section>
+<section class="card" id="emp" hidden><h2>Welcome</h2><p class="em" style="text-align:left;padding:0 0 8px">Create your meter, tell the app which meter screen shows what (for example screen 06 = peak import), then just type each new reading. Units and your balance are calculated for you.</p><button class="pr" style="width:100%" data-new="1">Create my meter</button></section>
 <div id="app" hidden>
-<section class="hero" id="hr"></section><div class="kp" id="kp"></div><section class="card" id="sen"><h2 id="ft">نئی انٹری</h2>
-<label class="lb">تاریخ<input type="date" id="fd"></label><div id="fch"></div>
-<div class="net"><span>کل امپورٹ <b id="ti">—</b><br>کل ایکسپورٹ <b id="te">—</b><br>Net (ایکسپورٹ − امپورٹ)</span><span id="nu">—</span></div>
-<div class="bt"><button class="pr" id="sv">محفوظ کریں</button><button class="gh" id="cl" hidden>منسوخ</button></div></section>
-<section class="card" id="chs"><div class="sh2"><h2>استعمال کا خاکہ</h2><span class="lg"><i class="b1"></i>امپورٹ <i class="b2"></i>ایکسپورٹ</span></div><div id="chv"></div></section><div class="mz"><div>موجودہ مہینے کا میزان<small id="mc"></small></div><div class="bg" id="mt">0</div></div>
-<div class="sh"><h2>موجودہ مہینے کا ریکارڈ</h2><div class="bt" style="margin:0"><button class="sm so" id="mo">مہینہ بند کریں</button><button class="sm" id="cx">Excel کاپی</button><button class="sm" id="em">میٹر کی ترتیب</button></div></div>
-<section class="card" id="cp" hidden><h2>مہینہ بند کر کے محفوظ کریں</h2><p class="nt" id="ci" style="text-align:right"></p><label class="lb">اس مہینے کا نام<input type="text" id="cl2"></label><div class="bt"><button class="pr" id="cok">بند کریں اور نیا مہینہ شروع کریں</button><button class="gh" id="cno">منسوخ</button></div></section>
-<div class="tw" id="tw"></div><p class="nt" id="cy" hidden>پہلی انٹری پچھلے مہینے کی آخری ریڈنگ ہے، اگلے یونٹ اسی سے نکلیں گے۔</p>
-<div class="sh"><h2>پچھلے مہینے</h2></div><div id="al"></div><div id="av"></div><section class="card" id="rp"></section><section class="card" id="stc"><h2>ترتیبات</h2><button class="st" data-q="cf">میٹر کی ترتیب (نام اور چینل)<span>‹</span></button><button class="st" data-q="new">نیا میٹر بنائیں<span>‹</span></button><button class="st" data-q="xl">Excel کاپی (موجودہ مہینہ)<span>‹</span></button></section>
-</div>
-<details style="margin-top:18px"><summary style="min-height:44px;color:var(--mu);cursor:pointer">بیک اپ اور بحالی</summary><div class="card" style="margin-top:6px"><p class="nt" style="text-align:right;padding:0">ڈیٹا اسی فون میں محفوظ ہے۔ فون بدلنے یا براؤزر صاف کرنے سے پہلے بیک اپ کاپی کر کے WhatsApp یا Notes میں رکھ لیں۔</p><div class="bt"><button class="gh" id="bk" style="flex:1">بیک اپ کاپی کریں</button></div><label class="lb" style="margin-top:10px">بیک اپ یہاں پیسٹ کریں</label><textarea id="rs"></textarea><div class="bt"><button class="gh" id="rb" style="flex:1">بحال کریں</button></div></div></details>
-</div><nav class="bn" id="bn" hidden aria-label="مینو"></nav><div class="toast" id="ts" role="status" aria-live="polite"></div>
+<section id="ho"><div class="hero" id="hr"></div><section class="card"><h2>Import vs Export, last readings</h2><div id="chv"></div></section></section>
+<section class="card" id="en"><h2 id="ft">New reading</h2><label>Date<input type="date" id="fd"></label><div id="fch"></div>
+<div class="net"><span>Import <b id="ti" style="font-size:16px">—</b> · Export <b id="te" style="font-size:16px">—</b></span><b id="nu">—</b></div>
+<div class="bt"><button class="pr" id="sv">Save reading</button><button class="gh" id="cl" hidden>Cancel</button></div></section>
+<section id="hi"><div class="sh"><h2>Records</h2><div class="bt" style="margin:0"><button class="gh" id="mo">Close month</button><button class="gh" id="cx">Copy for Excel</button></div></div>
+<div class="tw" id="tw"></div><p class="em" id="cy" hidden>The first row is last month's closing reading; new units are measured from it.</p>
+<div class="sh" style="margin-top:20px"><h2>Past months</h2></div><div class="card" id="al"></div><div id="av"></div></section>
+<section class="card" id="rp"></section><section class="card" id="st"><h2>Settings</h2><button class="st" data-q="cf">Meter setup (name and channels)<span>›</span></button><button class="st" data-q="new">Add a new meter<span>›</span></button><button class="st" data-q="bk">Copy backup<span>›</span></button><label style="margin-top:12px">Paste a backup here to restore</label><textarea id="rs"></textarea><div class="bt"><button class="gh" id="rb">Restore</button></div></section>
+</div></div>
+<nav class="bn" id="bn" hidden></nav><div class="toast" id="ts" role="status" aria-live="polite"></div>
 <script>
 (function(){
-var K='meter-reading-v2',MN=['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'];
-var KBK=[{k:'a',l:'Imp 06 (پیک)',s:'06',t:'imp'},{k:'b',l:'Imp 08 (آف پیک)',s:'08',t:'imp'},{k:'x',l:'Exp 09',s:'09',t:'exp'}];
-var db={meters:[],act:null},ed=null,pd=null,vw=null,pa=false,cfg=null;
+var K='meter-reading-v2',MN=['January','February','March','April','May','June','July','August','September','October','November','December'],UM=['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'];
+var KBK=[{k:'a',l:'Peak Import',s:'06',t:'imp'},{k:'b',l:'Off-Peak Import',s:'08',t:'imp'},{k:'x',l:'Export',s:'09',t:'exp'}];
+var db={meters:[],act:null},ed=null,pd=null,cfg=null,cc=false,pa=null,TH='dark';
 var $=function(i){return document.getElementById(i)};
 function M(){return db.meters.filter(function(m){return m.id===db.act})[0]}
 function cp(o){return JSON.parse(JSON.stringify(o))}
@@ -136,173 +85,125 @@ function dmy(s){var p=s.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
 function today(){var t=new Date();return t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0')}
 function sorted(r){return r.slice().sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:0})}
 function toast(t){var e=$('ts');e.textContent=t;e.classList.add('s');clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove('s')},2600)}
-function conv(o){var N={wazir:'وزیر باغ',kohat:'کوہاٹ روڈ'},out=[];
-['wazir','kohat'].forEach(function(k){var v=o[k];if(!v)return;var rs=Array.isArray(v)?v:(v.rows||[]),ar=Array.isArray(v)?[]:(v.archive||[]);
-var cv=function(r){var n={id:r.id,d:r.d,v:{a:r.a,b:r.b,x:r.x}};if(r.carry)n.carry=1;return n};
-out.push({id:k,name:N[k],ch:cp(KBK),rows:rs.map(cv),arch:ar.map(function(m){return{id:m.id,label:m.label,rows:m.rows.map(cv)}})})});return out}
-function fix(){if(!db.meters.some(function(m){return m.id===db.act}))db.act=db.meters.length?db.meters[0].id:null}
-function save(){try{localStorage.setItem(K,JSON.stringify(db))}catch(e){toast('ڈیٹا محفوظ نہیں ہو سکا')}}
-function load(){try{var s=localStorage.getItem(K);if(s){var o=JSON.parse(s);if(o&&Array.isArray(o.meters)){db=o;fix();return}}
-s=localStorage.getItem('meter-reading-v1');if(s){db.meters=conv(JSON.parse(s));fix();save()}}catch(e){}}
+function fix(){var A=/[\u0600-\u06FF]/;db.meters.forEach(function(m){if(A.test(m.name))m.name=({wazir:'Wazir Bagh',kohat:'Kohat Road'})[m.id]||'My Meter';
+m.ch.forEach(function(c){if(A.test(c.l||'')||A.test(c.s||''))c.l=({a:'Peak Import',b:'Off-Peak Import',x:'Export'})[c.k]||'Channel'});
+(m.arch||[]).forEach(function(a){UM.forEach(function(u,i){a.label=a.label.replace(u,MN[i])});if(A.test(a.label))a.label='Past month'});});
+if(!db.meters.some(function(m){return m.id===db.act}))db.act=db.meters.length?db.meters[0].id:null}
+function save(){try{localStorage.setItem(K,JSON.stringify(db))}catch(e){toast('Could not save data')}}
+function load(){try{var s=localStorage.getItem(K);if(s){var o=JSON.parse(s);if(o&&Array.isArray(o.meters)){db=o;fix();save()}}}catch(e){}}
 function calc(m,rows){var tot=0;var out=rows.map(function(r,i){var p=rows[i-1],o={id:r.id,d:r.d,v:r.v,u:{},ti:0,te:0,net:0,carry:r.carry};
 if(p){m.ch.forEach(function(c){var a=r.v[c.k],b=p.v[c.k],u=(a==null||b==null)?null:a-b;o.u[c.k]=u;if(u!=null){if(c.t=='imp')o.ti+=u;else o.te+=u}});o.net=o.te-o.ti}
 tot+=o.net;return o});return{rows:out,tot:tot}}
-function tabs(){$('tabs').innerHTML=db.meters.map(function(m){return '<button class="tab" data-m="'+esc(m.id)+'" aria-selected="'+(m.id===db.act)+'">'+esc(m.name)+'</button>'}).join('')+'<button class="tab" data-new="1" aria-selected="false">+ نیا میٹر</button>'}
+function tint(n){var t=Math.min(Math.sqrt(Math.abs(n)/150),1),c=n>=0?'22,163,74':'220,38,38';if(!n)return{g:'linear-gradient(160deg,#1e2a26,#131a18)',b:'transparent'};
+return{g:'linear-gradient(160deg,rgba('+c+','+(.3+.65*t)+'),rgba('+c+','+(.08+.45*t)+')),#0f1513',b:'rgba('+c+','+(.16+.3*t)+')'}}
+function tabs(){$('tabs').innerHTML=db.meters.map(function(m){return '<button class="tab" data-m="'+esc(m.id)+'" aria-selected="'+(m.id===db.act)+'">'+esc(m.name)+'</button>'}).join('')+'<button class="tab" data-new="1" aria-selected="false">+ New meter</button>'}
+function hero(c){var m=M(),ti=0,te=0,cu={};c.rows.forEach(function(x){ti+=x.ti;te+=x.te;m.ch.forEach(function(k){if(x.u[k.k]!=null)cu[k.k]=(cu[k.k]||0)+x.u[k.k]})});
+var n=te-ti,z=tint(n),cl=['#60a5fa','#a5b4fc','#7dd3fc','#c4b5fd'],bar='',lg='';
+m.ch.filter(function(k){return k.t=='imp'}).forEach(function(k,i){var v=Math.max(cu[k.k]||0,0);if(v>0)bar+='<i style="flex:'+v+';background:'+cl[i%4]+'"></i>';lg+='<span><u style="background:'+cl[i%4]+'"></u>'+esc(k.l)+' <b>'+fmt(cu[k.k]||0)+'</b></span>'});
+document.body.style.setProperty('--tint',z.b);$('hr').style.background=z.g;
+$('hr').innerHTML='<small>This month · '+c.rows.length+' readings</small><div class="nb">'+sgn(n)+'<em>kWh</em></div><div class="ns">'+(n>0?'Surplus: the grid owes you '+fmt(n)+' units':n<0?'Deficit: you owe the grid '+fmt(-n)+' units':'Balanced')+'</div><div class="tl"><div><small>Used (Import)</small><b>'+fmt(ti)+'</b></div><div><small>Given (Export)</small><b>'+fmt(te)+'</b></div></div><div class="sp">'+bar+'</div><div class="lgd">'+lg+'</div>'}
+function fk(n){return n>=1000?(Math.round(n/100)/10)+'k':fmt(n)}
+function chart(c){var p=c.rows.slice(1).slice(-8);if(!p.length){$('chv').innerHTML='<div class="em">Add at least two readings to see the chart.</div>';return}
+var W=360,H=180,t0=16,b0=26,mx=1;p.forEach(function(x){mx=Math.max(mx,x.ti,x.te)});var sw=(W-16)/p.length,bw=Math.min(16,sw/2.6),s='<svg viewBox="0 0 '+W+' '+H+'">';
+p.forEach(function(x,i){var cx=8+sw*(i+.5);[[x.ti,'#3b82f6',-bw-1],[x.te,'#f59e0b',1]].forEach(function(b){var h=(H-b0-t0)*Math.max(b[0],0)/mx,y=H-b0-h;s+='<rect x="'+(cx+b[2])+'" y="'+y+'" width="'+bw+'" height="'+Math.max(h,1)+'" rx="3" fill="'+b[1]+'"/><text x="'+(cx+b[2]+bw/2)+'" y="'+(y-3)+'" text-anchor="middle">'+fk(b[0])+'</text>'});s+='<text x="'+cx+'" y="'+(H-8)+'" text-anchor="middle">'+dmy(x.d).slice(0,5)+'</text>'});
+$('chv').innerHTML=s+'</svg><div class="lgd"><span><u style="background:#3b82f6"></u>Import</span><span><u style="background:#f59e0b"></u>Export</span></div>'}
 function inp(k){return document.querySelector('#fch [data-k="'+k+'"]')}
 function form(){var m=M();if(!m)return;
-$('fch').innerHTML=m.ch.map(function(c){return '<div class="ch '+c.t+'"><div class="nm">'+esc(c.l)+(c.s?' · '+esc(c.s):'')+'</div><input type="number" inputmode="decimal" step="any" data-k="'+c.k+'" placeholder="موجودہ ریڈنگ" aria-label="'+esc(c.l)+'"><div class="mt"><span>پچھلی: <b id="p_'+c.k+'">—</b></span><span>یونٹ: <b id="u_'+c.k+'">—</b></span></div></div>'}).join('');
-reset()}
+$('fch').innerHTML=m.ch.map(function(c){return '<div class="ch '+c.t+'"><div class="nm">'+esc(c.l)+(c.s?' · screen '+esc(c.s):'')+'</div><input type="number" inputmode="decimal" step="any" data-k="'+c.k+'" placeholder="Current reading"><div class="mt"><span>Previous: <b id="p_'+c.k+'">—</b></span><span>Units: <b id="u_'+c.k+'">—</b></span></div></div>'}).join('');reset()}
 function prev(){var d=$('fd').value,b=null;M().rows.forEach(function(r){if(r.id!==ed&&d&&r.d<d&&(!b||r.d>b.d))b=r});return b}
 function pv(){var m=M();if(!m)return;var p=prev(),ti=0,te=0,ok=!!p;
 m.ch.forEach(function(c){var a=parseFloat(inp(c.k).value),pb=p?p.v[c.k]:null,e=$('u_'+c.k),u=(pb!=null&&!isNaN(a))?a-pb:null;
 $('p_'+c.k).textContent=fmt(pb);e.textContent=u===null?'—':sgn(u);e.classList.toggle('wn',u!==null&&u<0);
 if(u===null)ok=false;else if(c.t=='imp')ti+=u;else te+=u});
 if(!p){$('ti').textContent=$('te').textContent=$('nu').textContent='0';return}
-$('ti').textContent=ok?fmt(ti):'—';$('te').textContent=ok?fmt(te):'—';$('nu').textContent=ok?sgn(te-ti):'—'}
-function reset(){ed=null;$('fd').value=today();document.querySelectorAll('#fch input').forEach(function(e){e.value=''});$('sv').textContent='محفوظ کریں';$('ft').textContent='نئی انٹری';$('cl').hidden=true;pv()}
-function sv(){var m=M(),d=$('fd').value,v={},bad=!d;
-m.ch.forEach(function(c){var x=parseFloat(inp(c.k).value);if(isNaN(x))bad=true;v[c.k]=x});
-if(bad)return toast('تاریخ اور سب ریڈنگز بھریں');
-if(m.rows.some(function(r){return r.d===d&&r.id!==ed}))return toast('اس تاریخ کی انٹری پہلے سے ہے');
-var was=!!ed;
-if(ed){var r=m.rows.filter(function(q){return q.id===ed})[0];if(r){r.d=d;r.v=v}}else m.rows.push({id:Date.now(),d:d,v:v});
-save();pd=null;reset();lst();toast(was?'انٹری اپڈیٹ ہو گئی':'انٹری محفوظ ہو گئی');go('ho')}
-function tbl(m,c,act){var h='<table><thead><tr><th class="d">Date</th>';
-m.ch.forEach(function(x){var q=x.t=='imp'?'i':'e';h+='<th class="'+q+'">'+esc(x.l)+'</th><th class="'+q+'">U</th>'});
-h+='<th class="n">کل امپورٹ</th><th class="e">کل ایکسپورٹ</th><th class="n">Net</th>'+(act?'<th></th>':'')+'</tr></thead><tbody>';
-c.rows.slice().reverse().forEach(function(r){h+='<tr><td class="d">'+dmy(r.d)+'</td>';
-m.ch.forEach(function(x){var q=x.t=='imp'?'i':'e';h+='<td class="'+q+'">'+fmt(r.v[x.k])+'</td><td class="'+q+'">'+fmt(r.u[x.k])+'</td>'});
-h+='<td class="n">'+fmt(r.ti)+'</td><td class="e">'+fmt(r.te)+'</td><td class="n">'+fmt(r.net)+'</td>';
-if(act)h+='<td class="ac"><button class="sm" data-e="'+r.id+'">ایڈٹ</button><button class="sm dn" data-x="'+r.id+'">'+(pd===r.id?'پکا؟':'حذف')+'</button></td>';
-h+='</tr>'});return h+'</tbody></table>'}
-function lst(){var m=M(),c=calc(m,sorted(m.rows));$('mt').textContent=fmt(c.tot);$('mc').textContent=c.rows.length?c.rows.length+' انٹریز':'';
-$('tw').innerHTML=c.rows.length?tbl(m,c,true):'<div class="em">ابھی کوئی انٹری نہیں۔ اوپر پہلی ریڈنگ ڈالیں۔</div>';
-$('cy').hidden=!(c.rows.length&&c.rows[0].carry);arch();viz(c);hero(c)}
-function edit(id){var m=M(),r=m.rows.filter(function(q){return q.id===id})[0];if(!r)return;
-ed=id;pd=null;$('fd').value=r.d;m.ch.forEach(function(c){inp(c.k).value=r.v[c.k]==null?'':r.v[c.k]});
-$('sv').textContent='تبدیلی محفوظ کریں';$('ft').textContent='انٹری ایڈٹ';$('cl').hidden=false;pv();lst();go('en')}
-function del(id){if(pd!==id){pd=id;lst();return}var m=M();m.rows=m.rows.filter(function(q){return q.id!==id});pd=null;if(ed===id)reset();save();lst();pv();toast('انٹری حذف ہو گئی')}
-function dl(rows){var f=rows[0].d.split('-');return MN[+f[1]-1]+' '+f[0]}
-function oc(){var m=M(),r=sorted(m.rows);if(r.length<2)return toast('مہینہ بند کرنے کے لیے کم از کم دو انٹریز چاہئیں');
-$('cl2').value=dl(r);$('ci').textContent=r.length+' انٹریز الگ محفوظ ہوں گی۔ نیا مہینہ آخری ریڈنگ ('+dmy(r[r.length-1].d)+') سے شروع ہوگا۔';$('cp').hidden=false;$('cp').scrollIntoView({behavior:'smooth',block:'center'})}
-function cc(){var m=M(),r=sorted(m.rows);if(r.length<2){$('cp').hidden=true;return}var l=r[r.length-1];
-m.arch.unshift({id:Date.now(),label:$('cl2').value.trim()||dl(r),rows:r.map(function(x){return{id:x.id,d:x.d,v:x.v}})});
-m.rows=[{id:Date.now()+1,d:l.d,v:cp(l.v),carry:1}];save();$('cp').hidden=true;pd=null;vw=null;reset();arch();lst();toast('مہینہ محفوظ ہو گیا — نیا مہینہ شروع')}
-function arch(){var m=M(),a=m.arch;
-$('al').innerHTML=a.length?a.map(function(x){var c=calc(m,sorted(x.rows));return '<button class="chip'+(vw===x.id?' on':'')+'" data-a="'+x.id+'"><span>'+esc(x.label)+'</span><small>'+c.rows.length+' entries, Mizan '+fmt(c.tot)+'</small></button>'}).join(''):'<div class="em">ابھی کوئی مہینہ محفوظ نہیں۔</div>';
-var x=a.filter(function(q){return q.id===vw})[0];if(!x){vw=null;$('av').innerHTML='';return}
-var c=calc(m,sorted(x.rows));
-$('av').innerHTML='<div class="mz"><div>'+esc(x.label)+'<small>'+c.rows.length+' انٹریز</small></div><div class="bg">'+fmt(c.tot)+'</div></div><div class="tw">'+tbl(m,c,false)+'</div><div class="bt"><button class="gh" style="flex:1" data-z="copy">Excel کاپی</button><button class="gh" style="flex:1" data-z="open">دوبارہ کھولیں</button></div><div class="bt"><button class="gh dn" style="flex:1" data-z="del">'+(pa?'پکا حذف کریں؟':'یہ مہینہ حذف کریں')+'</button><button class="gh" style="flex:1" data-z="hide">بند کریں</button></div>'}
-function az(z){var m=M(),x=m.arch.filter(function(q){return q.id===vw})[0];if(!x)return;
-if(z=='hide'){vw=null;pa=false;arch();return}
-if(z=='copy'){cx(m,calc(m,sorted(x.rows)));return}
-if(z=='del'){if(!pa){pa=true;arch();return}m.arch=m.arch.filter(function(q){return q.id!==x.id});vw=null;pa=false;save();arch();toast('مہینہ حذف ہو گیا');return}
-if(z=='open'){if(m.arch[0].id!==x.id)return toast('صرف آخری محفوظ مہینہ دوبارہ کھل سکتا ہے');if(m.rows.length>1)return toast('پہلے موجودہ مہینے کی نئی انٹریز ہٹائیں یا اسے بند کریں');
-m.rows=x.rows.map(function(r){return{id:r.id,d:r.d,v:r.v}});m.arch=m.arch.filter(function(q){return q.id!==x.id});vw=null;pa=false;save();reset();arch();lst();toast('مہینہ دوبارہ کھل گیا');window.scrollTo({top:0,behavior:'smooth'})}}
+$('ti').textContent=ok?fmt(ti):'—';$('te').textContent=ok?fmt(te):'—';$('nu').textContent=ok?sgn(te-ti):'—';$('nu').className=ok?(te-ti>=0?'pos':'neg'):''}
+function reset(){ed=null;$('fd').value=today();document.querySelectorAll('#fch input').forEach(function(e){e.value=''});$('sv').textContent='Save reading';$('ft').textContent='New reading';$('cl').hidden=true;pv()}
+function sv(){var m=M(),d=$('fd').value,v={},bad=!d;m.ch.forEach(function(c){var x=parseFloat(inp(c.k).value);if(isNaN(x))bad=true;v[c.k]=x});
+if(bad)return toast('Enter the date and every reading');
+if(m.rows.some(function(r){return r.d===d&&r.id!==ed}))return toast('A reading for this date already exists');
+var was=!!ed;if(ed){var r=m.rows.filter(function(q){return q.id===ed})[0];if(r){r.d=d;r.v=v}}else m.rows.push({id:Date.now(),d:d,v:v});
+save();pd=null;reset();lst();toast(was?'Reading updated':'Reading saved');go('ho')}
+function tbl(m,c){var h='<table><thead><tr><th>Date</th>';m.ch.forEach(function(x){h+='<th>'+esc(x.l)+'</th><th>Units</th>'});h+='<th>Import</th><th>Export</th><th>Net</th><th></th></tr></thead><tbody>';
+c.rows.slice().reverse().forEach(function(r){h+='<tr><td>'+dmy(r.d)+'</td>';m.ch.forEach(function(x){h+='<td>'+fmt(r.v[x.k])+'</td><td>'+fmt(r.u[x.k])+'</td>'});
+h+='<td>'+fmt(r.ti)+'</td><td>'+fmt(r.te)+'</td><td class="n '+(r.net>0?'pos':r.net<0?'neg':'')+'">'+sgn(r.net)+'</td><td><button class="gh" style="min-height:34px;padding:0 10px" data-e="'+r.id+'">Edit</button> <button class="gh dn" style="min-height:34px;padding:0 10px" data-x="'+r.id+'">'+(pd===r.id?'Sure?':'Delete')+'</button></td></tr>'});return h+'</tbody></table>'}
+function lst(){var m=M(),c=calc(m,sorted(m.rows));hero(c);chart(c);
+$('tw').innerHTML=c.rows.length?tbl(m,c):'<div class="em">No readings yet. Add your first reading.</div>';$('cy').hidden=!(c.rows.length&&c.rows[0].carry);
+arch();return;var a=m.arch;$('al').innerHTML=a.length?a.map(function(x){var q=calc(m,sorted(x.rows));return '<div class="row"><div><b>'+esc(x.label)+'</b><div class="mt"><span>'+q.rows.length+' readings</span></div></div><div style="text-align:right"><b class="'+(q.tot>=0?'pos':'neg')+'">'+sgn(q.tot)+' kWh</b> <button class="gh dn" style="min-height:34px;padding:0 10px;margin-left:6px" data-a="'+x.id+'">'+(pa===x.id?'Sure?':'Delete')+'</button></div></div>'}).join(''):'<div class="em">No closed months yet.</div>'}
+function edit(id){var m=M(),r=m.rows.filter(function(q){return q.id===id})[0];if(!r)return;go('en');ed=id;pd=null;$('fd').value=r.d;m.ch.forEach(function(c){inp(c.k).value=r.v[c.k]==null?'':r.v[c.k]});$('sv').textContent='Save changes';$('ft').textContent='Edit reading';$('cl').hidden=false;pv();lst()}
+function del(id){if(pd!==id){pd=id;lst();return}var m=M();m.rows=m.rows.filter(function(q){return q.id!==id});pd=null;save();lst();toast('Reading deleted')}
+function close(){var m=M(),r=sorted(m.rows);if(r.length<2)return toast('You need at least two readings to close a month');
+if(!cc){cc=true;$('mo').textContent='Tap again to confirm';setTimeout(function(){cc=false;$('mo').textContent='Close month'},4000);return}
+var l=r[r.length-1],f=r[0].d.split('-');m.arch.unshift({id:Date.now(),label:MN[+f[1]-1]+' '+f[0],rows:r.map(function(x){return{id:x.id,d:x.d,v:x.v}})});
+m.rows=[{id:Date.now()+1,d:l.d,v:cp(l.v),carry:1}];cc=false;$('mo').textContent='Close month';save();lst();toast('Month saved. A new month has started.')}
 function fb(t){try{var a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();var k=document.execCommand('copy');document.body.removeChild(a);return k}catch(e){return false}}
 function ct(t){if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(t).then(function(){return true},function(){return fb(t)});return Promise.resolve(fb(t))}
-function cx(m,c){if(!c.rows.length)return toast('کاپی کے لیے کوئی ریکارڈ نہیں');
-var H=['Date'];m.ch.forEach(function(x){H.push('Prev '+x.l,'Curr '+x.l,x.l+' U')});H.push('Total Imp U','Total Exp U','Net U (Exp-Imp)');
-var g=function(n){return n==null?'':n},L=[H.join('\t')];
-c.rows.forEach(function(r,i){var p=c.rows[i-1],a=[dmy(r.d)];m.ch.forEach(function(x){a.push(p?g(p.v[x.k]):'',g(r.v[x.k]),g(r.u[x.k]))});a.push(r.ti,r.te,r.net);L.push(a.join('\t'))});
-var z=H.map(function(){return''});z[H.length-2]='Mizan';z[H.length-1]=c.tot;L.push(z.join('\t'));
-ct(L.join('\n')).then(function(k){toast(k?'کاپی ہو گیا — Excel میں پیسٹ کریں':'کاپی نہیں ہو سکا')})}
-function hero(c){var m=M(),r=c.rows,ti=0,te=0,cu={};
-r.forEach(function(x){ti+=x.ti;te+=x.te;m.ch.forEach(function(k){if(x.u[k.k]!=null)cu[k.k]=(cu[k.k]||0)+x.u[k.k]})});
-var im=m.ch.filter(function(k){return k.t=='imp'}),n=te-ti,a=im[0],b=im.slice(1),vb=0;b.forEach(function(k){vb+=cu[k.k]||0});
-function nd(x,y,col,v,l,u){return '<circle cx="'+x+'" cy="'+y+'" r="34" fill="rgba(255,255,255,.04)" stroke="'+col+'" stroke-width="3"/><text class="nv" x="'+x+'" y="'+(y+3)+'">'+v+'</text><text class="nu" x="'+x+'" y="'+(y+17)+'">'+(u||'kWh')+'</text><text class="nl" x="'+x+'" y="'+(y+54)+'">'+esc(l)+'</text>'}
-function ln(d,col){return '<path class="fl" d="'+d+'" fill="none" stroke="'+col+'" stroke-width="2.5"/>'}
-var s='<svg viewBox="0 0 360 300" role="img" aria-label="توانائی کا بہاؤ">'+ln('M94 70H150Q180 70 180 112','#facc15')+ln('M180 112Q180 70 210 70H266','#f59e0b')+ln('M266 86H222Q196 86 196 112','#3b82f6')+(a?ln('M180 188Q180 240 150 240H94','#a855f7'):'')+(b.length?ln('M180 188Q180 240 210 240H266','#8b5cf6'):'')+
-'<circle cx="180" cy="150" r="38" fill="rgba(245,158,11,.1)" stroke="#f59e0b" stroke-width="3"/><path d="M184 128l-14 26h11l-4 20 17-30h-11z" fill="#f59e0b"/>'+
-nd(60,70,'#facc15',fmt(te),'ایکسپورٹ')+nd(300,70,'#3b82f6',sgn(n),'گرڈ بیلنس','Net')+(a?nd(60,240,'#a855f7',fmt(cu[a.k]||0),a.l):'')+(b.length?nd(300,240,'#8b5cf6',fmt(vb),b.length==1?b[0].l:'باقی امپورٹ'):'')+'</svg>';
-var tt=ti+te,pc=tt?Math.round(te/tt*100):0,sg='';for(var i=0;i<10;i++)sg+='<i'+(i<Math.round(pc/10)?' class="on"':'')+'></i>';
-$('hr').innerHTML='<div class="hh"><b>توانائی کا بہاؤ</b><span>'+(r.length?r.length+' انٹریز':'ابھی ڈیٹا نہیں')+'</span></div>'+s+'<div class="hh2"><span>ایکسپورٹ کا تناسب</span><b>'+pc+'%</b></div><div class="sg">'+sg+'</div><div class="hn"><span>'+(n>0?'آپ نے گرڈ کو زیادہ بجلی دی':n<0?'آپ نے گرڈ سے زیادہ بجلی لی':'امپورٹ اور ایکسپورٹ برابر')+'</span></div>'}
-function heroOld(c){var m=M(),r=c.rows,ti=0,te=0,cu={};
-r.forEach(function(x){ti+=x.ti;te+=x.te;m.ch.forEach(function(k){if(k.t=='imp'&&x.u[k.k]!=null)cu[k.k]=(cu[k.k]||0)+x.u[k.k]})});
-var n=te-ti,cl=['#60a5fa','#a5b4fc','#7dd3fc','#c4b5fd'],sm=0,bar='',lg='';
-m.ch.filter(function(k){return k.t=='imp'}).forEach(function(k,i){var v=Math.max(cu[k.k]||0,0);sm+=v;if(v>0)bar+='<i style="flex:'+v+';background:'+cl[i%4]+'"></i>';lg+='<span><u style="background:'+cl[i%4]+'"></u>'+esc(k.l)+' '+fmt(cu[k.k]||0)+'</span>'});
-var t='<div class="hh"><b>توانائی کا بہاؤ</b><span>'+(r.length?r.length+' انٹریز':'ابھی ڈیٹا نہیں')+'</span></div><svg viewBox="0 0 360 120" role="img" aria-label="گرڈ، میٹر اور گھر کے درمیان امپورٹ اور ایکسپورٹ">'+
-'<path d="M44 8v12M26 74l18-54 18 54M32 52h24M29 64h30M36 38h16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="98">گرڈ</text>'+
-'<rect x="150" y="14" width="60" height="64" rx="12" fill="rgba(255,255,255,.14)" stroke="#fff" stroke-width="2"/><rect x="160" y="24" width="40" height="16" rx="4" fill="rgba(0,0,0,.3)"/><path d="M182 46l-10 14h8l-3 10 13-16h-8z" fill="#ffd166"/><text x="180" y="98">میٹر</text>'+
-'<path d="M292 46l24-22 24 22M298 44v32h36V44" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="340" cy="16" r="8" fill="#ffd166"/><text x="316" y="98">گھر اور سولر</text>'+
-'<line class="fl" x1="142" y1="28" x2="92" y2="28" stroke="#fbbf24" stroke-width="3"/><polygon points="92,22 80,28 92,34" fill="#fbbf24"/><text class="v" x="111" y="16" style="fill:#fbbf24">'+fmt(te)+'</text><text x="111" y="44" style="font-size:10px;fill:#fbbf24">ایکسپورٹ</text>'+
-'<line class="fl" x1="88" y1="66" x2="138" y2="66" stroke="#93c5fd" stroke-width="3"/><polygon points="138,60 150,66 138,72" fill="#93c5fd"/><text x="115" y="58" style="font-size:10px;fill:#93c5fd">امپورٹ</text><text class="v" x="115" y="86" style="fill:#93c5fd">'+fmt(ti)+'</text>'+
-'<line class="fl" x1="214" y1="46" x2="282" y2="46" stroke="#fff" stroke-opacity=".7" stroke-width="2.5"/><polygon points="282,40 292,46 282,52" fill="#fff" fill-opacity=".7"/></svg>'+
-'<div class="hn"><small>Net (ایکسپورٹ − امپورٹ)</small><b class="'+(n>=0?'pos':'neg')+'">'+sgn(n)+'</b><span>'+(n>0?'آپ نے گرڈ کو زیادہ بجلی دی':n<0?'آپ نے گرڈ سے زیادہ بجلی لی':'امپورٹ اور ایکسپورٹ برابر')+'</span></div>'+(sm>0?'<div class="sp">'+bar+'</div>':'')+'<div class="lgd">'+lg+'</div>';
-$('hr').innerHTML=t}
-var NV=[['ho','ہوم','<path d="M3 11l9-8 9 8M5 10v10h14V10"/>'],['en','انٹری','<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'],['hi','ریکارڈ','<path d="M4 6h16M4 12h16M4 18h10"/>'],['rp','رپورٹ','<path d="M5 20V10M12 20V4M19 20v-7"/>'],['st','ترتیب','<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>']];
-function go(s){document.body.dataset.s=s;document.querySelectorAll('#bn button').forEach(function(b){b.classList.toggle('on',b.dataset.g==s)});if(s=='rp')rep();window.scrollTo({top:0,behavior:'smooth'})}
-function mon(m){var a=[];function t(rows,l){var c=calc(m,sorted(rows)),ti=0,te=0;c.rows.forEach(function(x){ti+=x.ti;te+=x.te});return{l:l,a:ti,b:te,n:te-ti}}
-m.arch.slice().reverse().forEach(function(x){a.push(t(x.rows,x.label))});if(m.rows.length>1)a.push(t(m.rows,'موجودہ'));return a}
-function bc(it){var W=360,H=170,t0=16,b0=28,mx=1;it.forEach(function(x){mx=Math.max(mx,x.a,x.b)});var sw=(W-16)/it.length,bw=Math.min(22,sw/2.6),s='<svg viewBox="0 0 '+W+' '+H+'">';
-it.forEach(function(x,i){var cx=8+sw*(i+.5);[[x.a,'#3b7ddd',-bw-1],[x.b,'#f59e0b',1]].forEach(function(b){var h=(H-b0-t0)*Math.max(b[0],0)/mx,y=H-b0-h;s+='<rect x="'+(cx+b[2])+'" y="'+y+'" width="'+bw+'" height="'+Math.max(h,1)+'" rx="3" fill="'+b[1]+'"/><text x="'+(cx+b[2]+bw/2)+'" y="'+(y-3)+'" text-anchor="middle">'+fk(b[0])+'</text>'});s+='<text x="'+cx+'" y="'+(H-10)+'" text-anchor="middle">'+esc(x.l.slice(0,10))+'</text>'});return s+'</svg>'}
-function lc(it){var W=360,H=130,p=26,v=it.map(function(x){return x.n}),mn=Math.min(0,Math.min.apply(0,v)),mx=Math.max(0,Math.max.apply(0,v)),r=(mx-mn)||1,sx=it.length>1?(W-2*p)/(it.length-1):0,Y=function(a){return H-24-(H-48)*(a-mn)/r},pt=v.map(function(a,i){return[p+sx*i,Y(a)]});
-var s='<svg viewBox="0 0 '+W+' '+H+'"><line x1="8" x2="352" y1="'+Y(0)+'" y2="'+Y(0)+'" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>';
-if(pt.length>1)s+='<polyline fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round" points="'+pt.map(function(q){return q.join(',')}).join(' ')+'"/>';
-pt.forEach(function(q,i){s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="4.5" fill="#16a34a"/><text x="'+q[0]+'" y="'+(q[1]-9)+'" text-anchor="middle">'+sgn(v[i])+'</text><text x="'+q[0]+'" y="'+(H-6)+'" text-anchor="middle">'+esc(it[i].l.slice(0,10))+'</text>'});return s+'</svg>'}
-function dn(a,b){var t=a+b||1,R=42,C=2*Math.PI*R;return '<svg viewBox="0 0 120 120" style="width:130px"><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#f59e0b" stroke-width="16"/><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#3b7ddd" stroke-width="16" stroke-dasharray="'+(a/t*C)+' '+C+'" transform="rotate(-90 60 60)"/><text x="60" y="62" text-anchor="middle" style="font:700 18px system-ui;fill:var(--ink)">'+Math.round(a/t*100)+'%</text></svg>'}
-function rep(){var m=M();if(!m)return;var d=mon(m),ti=0,te=0;d.forEach(function(x){ti+=x.a;te+=x.b});var k=d.length||1,w=d.slice(-6);
-var h='<h2>ماہانہ رپورٹ</h2><div class="kp2"><div><small>کل امپورٹ</small><b>'+fmt(ti)+'</b></div><div><small>کل ایکسپورٹ</small><b>'+fmt(te)+'</b></div><div><small>مجموعی Net</small><b>'+sgn(te-ti)+'</b></div><div><small>ماہانہ اوسط امپورٹ / ایکسپورٹ</small><b>'+fmt(ti/k)+' / '+fmt(te/k)+'</b></div></div>';
-if(!d.length)h+='<div class="em">رپورٹ کے لیے کم از کم دو انٹریز ڈالیں۔ مہینہ بند کرنے پر ہر مہینے کا موازنہ یہاں آئے گا۔</div>';
-else h+='<h2 style="margin-top:14px">ماہانہ موازنہ <span class="lg"><i class="b1"></i>امپورٹ <i class="b2"></i>ایکسپورٹ</span></h2>'+bc(w)+'<h2>Net کا رجحان</h2>'+lc(w)+'<h2>امپورٹ اور ایکسپورٹ کا تناسب</h2><div class="rr">'+dn(ti,te)+'<div class="lg" style="line-height:2.2"><i class="b1"></i>امپورٹ '+fmt(ti)+'<br><i class="b2"></i>ایکسپورٹ '+fmt(te)+'</div></div>';
-$('rp').innerHTML=h}
-function fk(n){return n>=1000?(Math.round(n/100)/10)+'k':fmt(n)}
-function viz(c){var r=c.rows,ti=0,te=0,l=r.length?r[r.length-1]:null;r.forEach(function(x){ti+=x.ti;te+=x.te});var n=te-ti;
-var T=[['کل امپورٹ',fmt(ti),'i','↓'],['کل ایکسپورٹ',fmt(te),'e','↑'],[n>=0?'Net (ایکسپورٹ زیادہ)':'Net (امپورٹ زیادہ)',sgn(n),n>=0?'g':'a','±'],['آخری ریڈنگ',l?dmy(l.d):'—','k','◷']];
-$('kp').innerHTML=T.map(function(t){return '<div class="kt '+t[2]+'"><span class="ki">'+t[3]+'</span><b>'+t[1]+'</b><small>'+t[0]+'</small></div>'}).join('');
-var p=r.slice(1).slice(-8);if(!p.length){$('chv').innerHTML='<div class="em">چارٹ کے لیے کم از کم دو انٹریز چاہئیں۔</div>';return}
-var W=360,H=190,t0=18,b0=30,mx=1;p.forEach(function(x){mx=Math.max(mx,x.ti,x.te)});
-var sw=(W-16)/p.length,bw=Math.min(16,sw/2.6),s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="امپورٹ اور ایکسپورٹ کا چارٹ">';
-[0,.5,1].forEach(function(f){var y=H-b0-(H-b0-t0)*f;s+='<line x1="8" x2="'+(W-8)+'" y1="'+y+'" y2="'+y+'" stroke="currentColor" stroke-opacity=".12"/>'});
-p.forEach(function(x,i){var cx=8+sw*(i+.5);[[x.ti,'#3b7ddd',-bw-1],[x.te,'#f59e0b',1]].forEach(function(b){var h=(H-b0-t0)*Math.max(b[0],0)/mx,y=H-b0-h;
-s+='<rect x="'+(cx+b[2])+'" y="'+y+'" width="'+bw+'" height="'+Math.max(h,1)+'" rx="3" fill="'+b[1]+'"/><text x="'+(cx+b[2]+bw/2)+'" y="'+(y-3)+'" text-anchor="middle">'+fk(b[0])+'</text>'});
-s+='<text x="'+cx+'" y="'+(H-12)+'" text-anchor="middle">'+dmy(x.d).slice(0,5)+'</text>'});
-$('chv').innerHTML=s+'</svg>'}
-// meter setup
-function cf(id){var m=id?db.meters.filter(function(q){return q.id===id})[0]:null;
-cfg={id:id,name:m?m.name:'',ch:m?cp(m.ch):[],lock:!!(m&&(m.rows.length||m.arch.length))};rc()}
+function cx(m,c){if(!c.rows.length)return toast('Nothing to copy yet');var H=['Date'];m.ch.forEach(function(x){H.push('Prev '+x.l,'Curr '+x.l,x.l+' Units')});H.push('Total Import','Total Export','Net (Export-Import)');
+var g=function(n){return n==null?'':n},L=[H.join('\t')];c.rows.forEach(function(r,i){var p=c.rows[i-1],a=[dmy(r.d)];m.ch.forEach(function(x){a.push(p?g(p.v[x.k]):'',g(r.v[x.k]),g(r.u[x.k]))});a.push(r.ti,r.te,r.net);L.push(a.join('\t'))});
+var z=H.map(function(){return''});z[H.length-2]='Month total';z[H.length-1]=c.tot;L.push(z.join('\t'));ct(L.join('\n')).then(function(k){toast(k?'Copied. Paste it into Excel.':'Copy failed')})}
+function cf(id){var m=id?db.meters.filter(function(q){return q.id===id})[0]:null;cfg={id:id,name:m?m.name:'',ch:m?cp(m.ch):[],lock:!!(m&&(m.rows.length||m.arch.length))};rc()}
 function sy(){cfg.name=$('cn2').value;document.querySelectorAll('#cf [data-f]').forEach(function(e){cfg.ch[+e.dataset.i][e.dataset.f]=e.value})}
-function rc(){var h='<h2>'+(cfg.id?'میٹر کی ترتیب':'نیا میٹر بنائیں')+'</h2><label class="lb">میٹر کا نام<input type="text" id="cn2" value="'+esc(cfg.name)+'" placeholder="مثلاً گھر کا میٹر"></label>';
-if(!cfg.id)h+='<div class="bt"><button class="gh" data-pre="kbk">KBK HXE34WB (مالک کی تصدیق)</button><button class="gh" data-pre="emp">خود چینل بناؤں</button></div>';
-h+='<p class="nt">ہر چینل میں میٹر کی اسکرین کا نام، اسکرین نمبر اور قسم لکھیں۔ یونٹ = موجودہ − پچھلی ریڈنگ۔ Net = کل ایکسپورٹ − کل امپورٹ۔</p>';
-cfg.ch.forEach(function(c,i){h+='<div class="cr"><input type="text" data-f="l" data-i="'+i+'" value="'+esc(c.l)+'" placeholder="نام، جیسے Imp 06"><input type="text" inputmode="numeric" data-f="s" data-i="'+i+'" value="'+esc(c.s||'')+'" placeholder="اسکرین"><select data-f="t" data-i="'+i+'"><option value="imp"'+(c.t=='imp'?' selected':'')+'>امپورٹ</option><option value="exp"'+(c.t=='exp'?' selected':'')+'>ایکسپورٹ</option></select>'+(cfg.lock?'<span></span>':'<button class="sm" data-rm="'+i+'" aria-label="ہٹائیں">✕</button>')+'</div>'});
-h+='<button class="sm" data-add="1" style="margin-top:10px">+ چینل شامل کریں</button><div class="bt"><button class="pr" data-ok="1">محفوظ کریں</button><button class="gh" data-no="1">منسوخ</button></div>';
-if(cfg.id)h+='<button class="sm dn" data-dm="1" style="margin-top:10px">'+(cfg.dm?'پکا حذف؟ اس میٹر کی سب انٹریز مٹ جائیں گی':'یہ میٹر حذف کریں')+'</button>';
+function rc(){var h='<h2>'+(cfg.id?'Meter setup':'Create a meter')+'</h2><label>Meter name<input type="text" id="cn2" value="'+esc(cfg.name)+'" placeholder="e.g. Home meter"></label>';
+if(!cfg.id)h+='<div class="bt"><button class="gh" data-pre="kbk">KBK HXE34WB preset</button><button class="gh" data-pre="emp">Build my own</button></div>';
+h+='<p class="em" style="text-align:left;padding:8px 0 0">One row per reading on your meter: a name, its screen number, and whether it is Import or Export. Units = current minus previous reading. Net = Export minus Import.</p>';
+cfg.ch.forEach(function(c,i){h+='<div class="cr"><input type="text" data-f="l" data-i="'+i+'" value="'+esc(c.l)+'" placeholder="Name"><input type="text" inputmode="numeric" data-f="s" data-i="'+i+'" value="'+esc(c.s||'')+'" placeholder="Screen"><select data-f="t" data-i="'+i+'"><option value="imp"'+(c.t=='imp'?' selected':'')+'>Import</option><option value="exp"'+(c.t=='exp'?' selected':'')+'>Export</option></select>'+(cfg.lock?'<span></span>':'<button class="gh" data-rm="'+i+'" aria-label="Remove">✕</button>')+'</div>'});
+h+='<button class="gh" data-add="1" style="margin-top:10px">+ Add channel</button><div class="bt"><button class="pr" data-ok="1">Save</button><button class="gh" data-no="1">Cancel</button></div>';
+if(cfg.id)h+='<button class="gh dn" data-dm="1" style="margin-top:10px">'+(cfg.dm?'Sure? All readings of this meter will be deleted':'Delete this meter')+'</button>';
 $('cf').innerHTML=h;$('cf').hidden=false;$('cf').scrollIntoView({behavior:'smooth',block:'start'})}
 function cfa(e){var t=e.target.closest('button');if(!t)return;var d=t.dataset;
 if(d.pre){sy();cfg.ch=d.pre=='kbk'?cp(KBK):[{k:nk(),l:'',s:'',t:'imp'},{k:nk(),l:'',s:'',t:'exp'}];if(d.pre=='kbk'&&!cfg.name)cfg.name='KBK HXE34WB';return rc()}
 if(d.add){sy();cfg.ch.push({k:nk(),l:'',s:'',t:'imp'});return rc()}
 if(d.rm!=null){sy();cfg.ch.splice(+d.rm,1);return rc()}
 if(d.no){$('cf').hidden=true;return}
-if(d.dm){sy();if(!cfg.dm){cfg.dm=1;return rc()}db.meters=db.meters.filter(function(q){return q.id!==cfg.id});fix();save();$('cf').hidden=true;all();return toast('میٹر حذف ہو گیا')}
-if(d.ok){sy();if(!cfg.name.trim())return toast('میٹر کا نام لکھیں');if(!cfg.ch.length)return toast('کم از کم ایک چینل شامل کریں');
-if(cfg.ch.some(function(c){return!c.l.trim()}))return toast('ہر چینل کا نام لکھیں');
+if(d.dm){sy();if(!cfg.dm){cfg.dm=1;return rc()}db.meters=db.meters.filter(function(q){return q.id!==cfg.id});fix();save();$('cf').hidden=true;all();return toast('Meter deleted')}
+if(d.ok){sy();if(!cfg.name.trim())return toast('Enter a meter name');if(!cfg.ch.length)return toast('Add at least one channel');
+if(cfg.ch.some(function(c){return!c.l.trim()}))return toast('Give every channel a name');
 cfg.ch.forEach(function(c){c.l=c.l.trim();c.s=c.s.trim()});
-if(cfg.id){var m=db.meters.filter(function(q){return q.id===cfg.id})[0];m.name=cfg.name.trim();m.ch=cfg.ch}
-else{var n={id:'m'+Date.now(),name:cfg.name.trim(),ch:cfg.ch,rows:[],arch:[]};db.meters.push(n);db.act=n.id}
-save();$('cf').hidden=true;all();toast('میٹر محفوظ ہو گیا')}}
-function all(){var has=db.meters.length>0;$('bn').hidden=!has;$('emp').hidden=has;$('app').hidden=!has;tabs();if(has){pd=null;vw=null;ed=null;form();lst()}}
-$('tabs').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;if(t.dataset.new)return cf(null);db.act=t.dataset.m;save();$('cf').hidden=true;$('cp').hidden=true;all();if(document.body.dataset.s=='rp')rep()});
-$('emp').addEventListener('click',function(e){if(e.target.closest('[data-new]'))cf(null)});
-$('cf').addEventListener('click',cfa);
-$('em').addEventListener('click',function(){cf(db.act)});
+if(cfg.id){var m=db.meters.filter(function(q){return q.id===cfg.id})[0];m.name=cfg.name.trim();m.ch=cfg.ch}else{var n={id:'m'+Date.now(),name:cfg.name.trim(),ch:cfg.ch,rows:[],arch:[]};db.meters.push(n);db.act=n.id}
+save();$('cf').hidden=true;all();toast('Meter saved')}}
+var vw=null,pz=null;
+function arch(){var m=M(),a=m.arch;
+$('al').innerHTML=a.length?a.map(function(x){var q=calc(m,sorted(x.rows));return '<button class="chip'+(vw===x.id?' on':'')+'" data-v="'+x.id+'"><span><b>'+esc(x.label)+'</b><br><small>'+q.rows.length+' readings</small></span><b class="'+(q.tot>=0?'pos':'neg')+'">'+sgn(q.tot)+' kWh</b></button>'}).join(''):'<div class="em">No closed months yet.</div>';
+var x=a.filter(function(q){return q.id===vw})[0];if(!x){vw=null;$('av').innerHTML='';return}
+var c=calc(m,sorted(x.rows));
+$('av').innerHTML='<div class="card"><h2>'+esc(x.label)+' <span class="'+(c.tot>=0?'pos':'neg')+'">'+sgn(c.tot)+' kWh</span></h2><div class="tw">'+tbl(m,c)+'</div><div class="bt"><button class="gh" data-z="copy">Copy for Excel</button><button class="gh" data-z="open">Reopen month</button><button class="gh dn" data-z="del">'+(pz?'Sure?':'Delete month')+'</button><button class="gh" data-z="hide">Hide</button></div></div>'}
+function az(z){var m=M(),x=m.arch.filter(function(q){return q.id===vw})[0];if(!x)return;
+if(z=='hide'){vw=null;pz=null;arch();return}
+if(z=='copy'){cx(m,calc(m,sorted(x.rows)));return}
+if(z=='del'){if(!pz){pz=1;arch();return}m.arch=m.arch.filter(function(q){return q.id!==x.id});vw=null;pz=null;save();lst();toast('Month deleted');return}
+if(z=='open'){if(m.arch[0].id!==x.id)return toast('Only the latest closed month can be reopened');if(m.rows.length>1)return toast('Remove or close the new readings of the current month first');
+m.rows=x.rows.map(function(r){return{id:r.id,d:r.d,v:r.v}});m.arch=m.arch.filter(function(q){return q.id!==x.id});vw=null;pz=null;save();lst();go('hi');toast('Month reopened')}}
+function mon(m){var a=[];function t(rows,l){var c=calc(m,sorted(rows)),ti=0,te=0;c.rows.forEach(function(x){ti+=x.ti;te+=x.te});return{l:l,a:ti,b:te,n:te-ti}}
+m.arch.slice().reverse().forEach(function(x){a.push(t(x.rows,x.label))});if(m.rows.length>1)a.push(t(m.rows,'Current'));return a}
+function bc(it){var W=360,H=170,t0=16,b0=28,mx=1;it.forEach(function(x){mx=Math.max(mx,x.a,x.b)});var sw=(W-16)/it.length,bw=Math.min(22,sw/2.6),s='<svg viewBox="0 0 '+W+' '+H+'">';
+it.forEach(function(x,i){var cx=8+sw*(i+.5);[[x.a,'#3b82f6',-bw-1],[x.b,'#f59e0b',1]].forEach(function(b){var h=(H-b0-t0)*Math.max(b[0],0)/mx,y=H-b0-h;s+='<rect x="'+(cx+b[2])+'" y="'+y+'" width="'+bw+'" height="'+Math.max(h,1)+'" rx="3" fill="'+b[1]+'"/><text x="'+(cx+b[2]+bw/2)+'" y="'+(y-3)+'" text-anchor="middle">'+fk(b[0])+'</text>'});s+='<text x="'+cx+'" y="'+(H-10)+'" text-anchor="middle">'+esc(x.l.slice(0,9))+'</text>'});return s+'</svg>'}
+function lc(it){var W=360,H=130,p=26,v=it.map(function(x){return x.n}),mn=Math.min(0,Math.min.apply(0,v)),mx=Math.max(0,Math.max.apply(0,v)),r=(mx-mn)||1,sx=it.length>1?(W-2*p)/(it.length-1):0,Y=function(a){return H-24-(H-48)*(a-mn)/r},pt=v.map(function(a,i){return[p+sx*i,Y(a)]});
+var s='<svg viewBox="0 0 '+W+' '+H+'"><line x1="8" x2="352" y1="'+Y(0)+'" y2="'+Y(0)+'" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>';
+if(pt.length>1)s+='<polyline fill="none" stroke="#22c55e" stroke-width="3" stroke-linejoin="round" points="'+pt.map(function(q){return q.join(',')}).join(' ')+'"/>';
+pt.forEach(function(q,i){s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="4.5" fill="'+(v[i]>=0?'#22c55e':'#dc2626')+'"/><text x="'+q[0]+'" y="'+(q[1]-9)+'" text-anchor="middle">'+sgn(v[i])+'</text><text x="'+q[0]+'" y="'+(H-6)+'" text-anchor="middle">'+esc(it[i].l.slice(0,9))+'</text>'});return s+'</svg>'}
+function dn(a,b){var t=a+b||1,R=42,C=2*Math.PI*R;return '<svg viewBox="0 0 120 120" style="width:130px"><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#f59e0b" stroke-width="16"/><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#3b82f6" stroke-width="16" stroke-dasharray="'+(a/t*C)+' '+C+'" transform="rotate(-90 60 60)"/><text x="60" y="62" text-anchor="middle" style="font:700 18px system-ui;fill:var(--ink)">'+Math.round(a/t*100)+'%</text></svg>'}
+function rep(){var m=M();if(!m)return;var d=mon(m),ti=0,te=0;d.forEach(function(x){ti+=x.a;te+=x.b});var k=d.length||1,w=d.slice(-6);
+var h='<h2>Reports</h2><div class="kp2"><div><small>Total import</small><b>'+fmt(ti)+'</b></div><div><small>Total export</small><b>'+fmt(te)+'</b></div><div><small>Overall net</small><b class="'+(te-ti>=0?'pos':'neg')+'">'+sgn(te-ti)+'</b></div><div><small>Monthly average (import / export)</small><b>'+fmt(ti/k)+' / '+fmt(te/k)+'</b></div></div>';
+if(!d.length)h+='<div class="em">Add at least two readings. Once you close a month, month-by-month charts appear here.</div>';
+else h+='<h2 style="margin-top:14px">Monthly comparison</h2>'+bc(w)+'<h2>Net trend</h2>'+lc(w)+'<h2>Import / export share</h2><div class="rr">'+dn(ti,te)+'<div class="lgd" style="flex-direction:column"><span><u style="background:#3b82f6"></u>Import '+fmt(ti)+'</span><span><u style="background:#f59e0b"></u>Export '+fmt(te)+'</span></div></div>';
+$('rp').innerHTML=h}
+var NV=[['ho','Home','<path d="M3 11l9-8 9 8M5 10v10h14V10"/>'],['en','Add','<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'],['hi','Records','<path d="M4 6h16M4 12h16M4 18h10"/>'],['rp','Reports','<path d="M5 20V10M12 20V4M19 20v-7"/>'],['st','Settings','<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>']];
+function go(s){document.body.dataset.s=s;if(s=='rp')rep();document.querySelectorAll('#bn button').forEach(function(b){b.classList.toggle('on',b.dataset.g==s)});window.scrollTo({top:0,behavior:'smooth'})}
+function all(){var has=db.meters.length>0;$('emp').hidden=has;$('app').hidden=!has;$('bn').hidden=!has;tabs();if(has){pd=null;ed=null;form();lst()}else document.body.style.setProperty('--tint','transparent')}
+$('tabs').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;if(t.dataset.new)return cf(null);db.act=t.dataset.m;save();$('cf').hidden=true;all();if(document.body.dataset.s=='rp')rep()});
+$('emp').addEventListener('click',function(e){if(e.target.closest('[data-new]'))cf(null)});$('cf').addEventListener('click',cfa);
 ['fd','fch'].forEach(function(i){$(i).addEventListener('input',pv)});
-$('sv').addEventListener('click',sv);$('cl').addEventListener('click',function(){reset();lst()});
-$('cx').addEventListener('click',function(){var m=M();cx(m,calc(m,sorted(m.rows)))});
-$('mo').addEventListener('click',oc);$('cok').addEventListener('click',cc);$('cno').addEventListener('click',function(){$('cp').hidden=true});
+$('sv').addEventListener('click',sv);$('cl').addEventListener('click',function(){reset();lst();go('hi')});
+$('cx').addEventListener('click',function(){var m=M();cx(m,calc(m,sorted(m.rows)))});$('mo').addEventListener('click',close);
 $('tw').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;if(t.dataset.e)edit(+t.dataset.e);else if(t.dataset.x)del(+t.dataset.x)});
-$('al').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;var id=+t.dataset.a;vw=vw===id?null:id;pa=false;arch();if(vw)$('av').scrollIntoView({behavior:'smooth',block:'start'})});
-$('av').addEventListener('click',function(e){var t=e.target.closest('button');if(t&&t.dataset.z)az(t.dataset.z)});
-$('bk').addEventListener('click',function(){ct(JSON.stringify(db)).then(function(k){toast(k?'بیک اپ کاپی ہو گیا — کہیں محفوظ کر لیں':'کاپی نہیں ہو سکا')})});
-$('rb').addEventListener('click',function(){var t=$('rs').value.trim();if(!t)return toast('پہلے بیک اپ پیسٹ کریں');
-try{var o=JSON.parse(t);if(Array.isArray(o.meters))db={meters:o.meters,act:o.act};else if(o.wazir||o.kohat)db={meters:conv(o),act:null};else throw 0;
-fix();save();$('rs').value='';all();toast('ڈیٹا بحال ہو گیا')}catch(e){toast('یہ بیک اپ درست نہیں ہے')}});
-var TH='dark';try{TH=localStorage.getItem('meter-theme')||'dark'}catch(e){}
-document.documentElement.dataset.theme=TH;
+$('al').addEventListener('click',function(e){var t=e.target.closest('button');if(!t||!t.dataset.a)return;var id=+t.dataset.a,m=M();if(pa!==id){pa=id;lst();return}m.arch=m.arch.filter(function(q){return q.id!==id});pa=null;save();lst();toast('Month deleted')});
+$('st').addEventListener('click',function(e){var t=e.target.closest('button');if(!t||!t.dataset.q)return;var q=t.dataset.q;if(q=='cf')cf(db.act);else if(q=='new')cf(null);else if(q=='bk')ct(JSON.stringify(db)).then(function(k){toast(k?'Backup copied. Save it in Notes or WhatsApp.':'Copy failed')})});
+$('rb').addEventListener('click',function(){var t=$('rs').value.trim();if(!t)return toast('Paste a backup first');try{var o=JSON.parse(t);if(!Array.isArray(o.meters))throw 0;db={meters:o.meters,act:o.act};fix();save();$('rs').value='';all();toast('Data restored')}catch(e){toast('That backup is not valid')}});
+try{TH=localStorage.getItem('meter-theme')||'dark'}catch(e){}document.documentElement.dataset.theme=TH;
 $('th').addEventListener('click',function(){TH=TH=='dark'?'light':'dark';document.documentElement.dataset.theme=TH;try{localStorage.setItem('meter-theme',TH)}catch(e){}});
 $('bn').innerHTML=NV.map(function(n){return '<button data-g="'+n[0]+'"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+n[2]+'</svg>'+n[1]+'</button>'}).join('');
 $('bn').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(b.dataset.g)});
-$('stc').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;var q=t.dataset.q;if(q=='cf')cf(db.act);else if(q=='new')cf(null);else if(q=='xl'){var m=M();cx(m,calc(m,sorted(m.rows)))}});
+$('al').addEventListener('click',function(e){var t=e.target.closest('button');if(t&&t.dataset.v){var id=+t.dataset.v;vw=vw===id?null:id;pz=null;arch()}});$('av').addEventListener('click',function(e){var t=e.target.closest('button');if(t&&t.dataset.z)az(t.dataset.z)});
+try{if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js')}catch(e){}
 load();all();go('ho');
 })();
 </script></body></html>
