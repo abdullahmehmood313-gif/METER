@@ -66,7 +66,7 @@ body:not([data-s=rp]) #rp{display:none}
 <section id="hi"><div class="sh"><h2>Records</h2><div class="bt" style="margin:0"><button class="gh" id="mo">Close month</button><button class="gh" id="cx">Copy for Excel</button></div></div>
 <div class="tw" id="tw"></div><p class="em" id="cy" hidden>The first row is last month's closing reading; new units are measured from it.</p>
 <div class="sh" style="margin-top:20px"><h2>Past months</h2></div><div class="card" id="al"></div><div id="av"></div></section>
-<section class="card" id="rp"></section><section class="card" id="st"><h2>Settings</h2><button class="st" data-q="cf">Meter setup (name and channels)<span>›</span></button><button class="st" data-q="new">Add a new meter<span>›</span></button><button class="st" data-q="bk">Copy backup<span>›</span></button><label style="margin-top:12px">Paste a backup here to restore</label><textarea id="rs"></textarea><div class="bt"><button class="gh" id="rb">Restore</button></div></section>
+<section class="card" id="rp"></section><section class="card" id="st"><h2>Settings</h2><button class="st" data-q="cf">Meter setup (name and channels)<span>›</span></button><button class="st" data-q="new">Add a new meter<span>›</span></button><button class="st" data-q="bk">Copy backup<span>›</span></button><p class="em" id="off" style="text-align:left;padding:10px 0 0">Offline status: checking…</p><label style="margin-top:12px">Paste a backup here to restore</label><textarea id="rs"></textarea><div class="bt"><button class="gh" id="rb">Restore</button></div></section>
 </div></div>
 <nav class="bn" id="bn" hidden></nav><div class="toast" id="ts" role="status" aria-live="polite"></div>
 <script>
@@ -203,7 +203,7 @@ $('th').addEventListener('click',function(){TH=TH=='dark'?'light':'dark';documen
 $('bn').innerHTML=NV.map(function(n){return '<button data-g="'+n[0]+'"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+n[2]+'</svg>'+n[1]+'</button>'}).join('');
 $('bn').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(b.dataset.g)});
 $('al').addEventListener('click',function(e){var t=e.target.closest('button');if(t&&t.dataset.v){var id=+t.dataset.v;vw=vw===id?null:id;pz=null;arch()}});$('av').addEventListener('click',function(e){var t=e.target.closest('button');if(t&&t.dataset.z)az(t.dataset.z)});
-try{if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js')}catch(e){}
+try{if('serviceWorker' in navigator&&/^https?:/.test(location.protocol)){navigator.serviceWorker.register('sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){return caches.match('./index.html')}).then(function(m){$('off').textContent=m?'Offline status: ready ✓ (the app is saved on this phone)':'Offline status: not saved yet. Close and reopen the app once while online.'}).catch(function(e){$('off').textContent='Offline status: not available ('+e.message+')'})}else $('off').textContent='Offline status: not available here'}catch(e){}
 load();all();go('ho');
 })();
 </script></body></html>
